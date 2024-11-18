@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style type="text/tailwindcss">
         * {
-            /border: 1px solid #000;
+            border: 1px solid #000;
         }
     
         body {
@@ -48,6 +48,22 @@
         }
     </style>
 
+    <style>
+        .w-500 {
+            width: 500px;
+        }
+
+        .w-700 {
+            width: 700px;
+        }
+
+        .h-500 {
+            height: 500px;
+        }
+
+        /* Tambahkan ukuran kustom lainnya jika diperlukan */
+    </style>
+
     <title>Mind Care</title>
 </head>
 
@@ -69,13 +85,16 @@
     <section class="h-[2000px]">
         <!-- Konten di sini untuk scroll -->
         <div class="w-full h-14"></div>
-        <section>
+        <section class="flex p-6 justify-between">
             <div class=text-white p-4 rounded mt">
-                <div>
-                    <h3>Merawat Kesehatan Mental Anda, Karena Anda Berharga</h3>
+                <div class="w-700 py-7">
+                    <h3 class="text-5xl font-bold ">Merawat Kesehatan Mental Anda, Karena Anda Berharga</h3>
                     <p>Kami ada di sini untuk membantu Anda menemukan kedamaian dan kebahagiaan</p>
                 </div>
                 <div><a href="">Test diagnosa gratis</a></div>
+            </div>
+            <div>
+                <img src="/Assets/2.png" class="w-500 h-500" alt="Img1">
             </div>
         </section>
     </section>
