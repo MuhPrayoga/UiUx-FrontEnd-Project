@@ -36,6 +36,11 @@
         .bg-lightBlue {
             background-color: #ADBDF7;
         }
+
+
+        .border-blue-500 {
+            border-width: 3px;
+        }
     
         .text-darkBlue {
             color: #1230AE;
@@ -166,50 +171,55 @@
             <div class="flex justify-between">
 
                 <!-- Kontainer Teks -->
-                <div class="w-817 flex items-center ml-20 mr-9">
-                    <div class="[text-shadow:_2px_2px_4px_rgba(0,0,0,0.3)]">
-                        <div class="w-500 h-20">
-                            <div class="font-medium text-2xl text-darkBlue">
-                                <h4>Yuk! kenali perasaanmu</h4>
+                <div class="flex justify-between">
+                    <!-- Kontainer Teks -->
+                    <div class="w-817 flex  mt-5 ml-20 mr-9">
+                        <div class="[text-shadow:_2px_2px_4px_rgba(0,0,0,0.3)]">
+                            <div class="w-500 h-20">
+                                <div class="font-medium text-2xl text-darkBlue">
+                                    <h4>Yuk! kenali perasaanmu</h4>
+                                </div>
+                                <!-- Menu Pilihan -->
+                                <div class="flex space-x-4 mt-3">
+                                    <!-- Pilihan 1 -->
+                                    <button
+                                        class="menu-item px-4 py-2 bg-blue-500 border-2 border-blue-500 text-white rounded-lg w-[132px] h-[42px] text-center transition-colors"
+                                        data-value="1">
+                                        Depresi
+                                    </button>
+
+                                    <!-- Pilihan 2 -->
+                                    <button
+                                        class="menu-item px-4 py-2 bg-white border-2 border-blue-500 text-black hover:bg-blue-500 hover:text-white rounded-lg w-[132px] h-[42px] text-center transition-colors"
+                                        data-value="2">
+                                        Bipolar
+                                    </button>
+
+                                    <!-- Pilihan 3 -->
+                                    <button
+                                        class="menu-item px-4 py-2 bg-white border-2 border-blue-500 text-black hover:bg-blue-500 hover:text-white rounded-lg w-[132px] h-[42px] text-center transition-colors"
+                                        data-value="3">
+                                        Skizofrenia
+                                    </button>
+
+                                    <!-- Pilihan 4 -->
+                                    <button
+                                        class="menu-item px-4 py-2 bg-white border-2 border-blue-500 text-black hover:bg-blue-500 hover:text-white rounded-lg w-[132px] h-[42px] text-center transition-colors"
+                                        data-value="4">
+                                        Kecemasan
+                                    </button>
+                                </div>
                             </div>
-                            <!-- Menu Pilihan -->
-                            <div class="flex space-x-4 mt-3">
-                                <!-- Pilihan 1 -->
-                                <button
-                                    class="menu-item px-4 py-2 bg-gray-300 hover:bg-blue-500 text-gray-800 hover:text-white rounded-lg w-[132px] h-[42px] text-center transition-colors"
-                                    data-value="1">
-                                    Pilihan 1
-                                </button>
-
-
-                                <!-- Pilihan 2 -->
-                                <button
-                                    class="menu-item px-4 py-2 bg-gray-300 hover:bg-blue-500 text-gray-800 hover:text-white rounded-lg w-[132px] h-[42px] text-center transition-colors"
-                                    data-value="2">
-                                    Pilihan 2
-                                </button>
-
-                                <!-- Pilihan 3 -->
-                                <button
-                                    class="menu-item px-4 py-2 bg-gray-300 hover:bg-blue-500 text-gray-800 hover:text-white rounded-lg w-[132px] h-[42px] text-center transition-colors"
-                                    data-value="3">
-                                    Pilihan 3
-                                </button>
-                            </div>
+                            <!-- Paragraf -->
+                            <p id="description" class="text-sm font-normal my-4"></p>
                         </div>
-                        <p class="text-sm font-normal mt-4">
-                            Kesehatan mental penting karena memengaruhi bagaimana kita berpikir, merasa, dan bertindak
-                            dalam kehidupan sehari-hari. Kesehatan mental yang baik membantu kita menghadapi stres,
-                            menjaga hubungan, membuat keputusan, dan meraih potensi diri. Jika kesehatan mental
-                            terganggu, hal ini bisa mempengaruhi fisik, emosi, dan kualitas hidup secara keseluruhan.
-                        </p>
                     </div>
                 </div>
 
 
                 <!-- Gambar dengan rotasi Y -->
-                <div class=" mr-20 [transform:_rotateY(180deg)]">
-                    <img src="/Assets/4.png" class="w-400 h-375" alt="Img2">
+                <div class=" mr-20 mb-20 [transform:_rotateY(180deg)]">
+                    <img src="/Assets/4.png" class="w-400 " alt="Img2">
                 </div>
 
             </div>
@@ -218,20 +228,43 @@
     </section>
 
     <script>
-        // JavaScript untuk memastikan hanya satu menu yang aktif
-        const menuItems = document.querySelectorAll('.menu-item');
+        const buttons = document.querySelectorAll('.menu-item');
+        const description = document.getElementById('description');
 
-        menuItems.forEach(item => {
-            item.addEventListener('click', () => {
-                // Hilangkan kelas "bg-blue-500" dari semua menu
-                menuItems.forEach(menu => menu.classList.remove('bg-blue-500', 'text-white'));
-                menuItems.forEach(menu => menu.classList.add('bg-gray-300', 'text-gray-800'));
+        // Isi paragraf berdasarkan pilihan
+        const descriptions = {
+            1: 'Penjelasan: Depresi adalah gangguan suasana hati yang menyebabkan perasaan sedih mendalam, kehilangan minat, dan kehilangan energi secara terus-menerus. Penderita depresi bisa merasa putus asa, sulit tidur, dan bahkan kehilangan minat pada aktivitas yang sebelumnya mereka nikmati. Kondisi ini juga bisa memengaruhi fungsi fisik, seperti selera makan dan energi. ',
+            2: 'Penjelasan: Bipolar adalah gangguan mood yang melibatkan episode perubahan suasana hati ekstrem, yaitu mania (perasaan euforia atau energi berlebihan) dan depresi, yang dapat memengaruhi perilaku, energi, dan kemampuan seseorang untuk menjalani kehidupan secara normal.',
+            3: 'Penjelasan: Skizofrenia adalah gangguan mental serius yang memengaruhi cara seseorang berpikir, merasakan, dan berperilaku, sering kali ditandai dengan gejala seperti delusi, halusinasi, dan kesulitan membedakan realitas dari fantasi.',
+            4: 'Penjelasan: Kecemasan adalah gangguan kesehatan mental yang ditandai dengan rasa khawatir atau takut yang berlebihan dan terus-menerus terhadap situasi atau hal tertentu, yang dapat disertai gejala fisik seperti detak jantung cepat, napas pendek, dan gangguan tidur.'
+        };
 
-                // Tambahkan kelas "bg-blue-500" ke menu yang diklik
-                item.classList.remove('bg-gray-300', 'text-gray-800');
-                item.classList.add('bg-blue-500', 'text-white');
+        // Fungsi untuk memperbarui tampilan
+        function updateContent(selectedValue) {
+            // Update paragraf
+            description.textContent = descriptions[selectedValue];
+
+            // Reset semua tombol dan aktifkan yang dipilih
+            buttons.forEach(button => {
+                if (button.dataset.value === selectedValue) {
+                    button.classList.remove('bg-white', 'text-black', 'hover:bg-blue-500', 'hover:text-white');
+                    button.classList.add('bg-blue-500', 'text-white');
+                } else {
+                    button.classList.remove('bg-blue-500', 'text-white');
+                    button.classList.add('bg-white', 'text-black', 'hover:bg-blue-500', 'hover:text-white');
+                }
+            });
+        }
+
+        // Tambahkan event listener ke semua tombol
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                updateContent(button.dataset.value);
             });
         });
+
+        // Set tampilan awal (Pilihan 1)
+        updateContent('1');
     </script>
 </body>
 
