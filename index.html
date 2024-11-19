@@ -9,7 +9,7 @@
         rel="stylesheet">
     <style type="text/tailwindcss">
         * {
-            border: 1px solid #000;
+            /border: 1px solid #000;
             font-family: 'Poppins', sans-serif;
         }   
     
@@ -78,16 +78,17 @@
 
 <body class="bg-lightBlue">
     <nav class="fixed w-full bg-lightGreen text-darkBlue z-50 shadow-[0_4px_8px_rgba(0,0,0,0.2)]">
-        <div class="px-6 py-2 flex justify-between">
-            <div class="font-serif text-xl font-bold">MIND CARE</div>
-            <div class="flex">
+        <div class="px-6 py-3 flex justify-between">
+            <div class="font-serif text-xl font-bold italic">
+                <p>MIND CARE</p>
+            </div>
+            <div class="flex text-center">
                 <a class="px-5 mx-3" href="#home">Home</a>
                 <a class="px-5 mx-3" href="about">Tentang Kami</a>
                 <a class="px-5 mx-3" href="kuisioner">Kuisioner Harian</a>
                 <a class="px-5 mx-3" href="article">Artikel</a>
-                <div class="px-5 mx-3 bg-darkBlue text-whiteCream">
-                    <a href="">Login</a>
-                </div>
+                <a class="px-5 mx-3 bg-darkBlue text-whiteCream rounded-sm" href="article">Login</a>
+
             </div>
         </div>
     </nav>
