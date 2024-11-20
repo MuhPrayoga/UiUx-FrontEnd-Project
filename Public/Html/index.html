@@ -11,7 +11,7 @@
     <style type="text/tailwindcss">
         * {
             font-family: 'Poppins', sans-serif;
-            border: 0.7px green solid;
+            /border: 0.7px green solid;
         }   
     
         body {
@@ -21,7 +21,7 @@
             background-attachment: fixed; /* Gambar tetap (tidak ikut scroll) */
             background-position: center; /* Memposisikan gambar di tengah */
         }
-    
+
         .bg-lightGreen {
             background-color: #7CF5FF;
         }
@@ -38,10 +38,6 @@
             background-color: #ADBDF7;
         }
 
-
-        .border-blue-500 {
-            border-width: 3px;
-        }
     
         .text-darkBlue {
             color: #1230AE;
@@ -50,56 +46,10 @@
         .text-whiteCream {
             color: #FFF7F7;
         }
-    
+
         nav {
             z-index: 50; /* Tetap berada di atas semua elemen */
             position: relative;
-        }
-    </style>
-
-    <style>
-        .mr-115 {
-            margin-right: 115px;
-        }
-
-        .w-400 {
-            width: 400px;
-        }
-
-        .w-500 {
-            width: 500px;
-        }
-
-        .w-600 {
-            width: 600px;
-        }
-
-        .w-700 {
-            width: 700px;
-        }
-
-        .w-800 {
-            width: 800px;
-        }
-
-        .w-817 {
-            width: 817px;
-        }
-
-        .w-375 {
-            width: 375px;
-        }
-
-        .h-375 {
-            height: 375px;
-        }
-
-        .h-500 {
-            height: 500px;
-        }
-
-        .perspective {
-            perspective: 1000px;
         }
 
         /* Tambahkan ukuran kustom lainnya jika diperlukan */
@@ -111,26 +61,44 @@
 <body class="bg-lightBlue">
     <nav class="fixed w-full bg-lightGreen text-darkBlue z-50 shadow-[0_4px_8px_rgba(0,0,0,0.2)]">
         <div class="px-6 py-3 flex justify-between">
-            <div class="font-serif text-xl font-bold italic">
+            <div class="font-serif text-xl font-bold italic flex items-center">
                 <p>MIND CARE</p>
             </div>
-            <div class="flex text-center">
-                <a class="px-5 mx-3" href="#home">Home</a>
-                <a class="px-5 mx-3" href="about">Tentang Kami</a>
-                <a class="px-5 mx-3" href="kuisioner">Kuisioner Harian</a>
-                <a class="px-5 mx-3" href="article">Artikel</a>
+            <div class="flex text-center items-center">
+                <a class="group px-5 py-1.5 mx-3 relative" href="/Public/Html/index.html">
+                    Home
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-[2px] bg-current transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a class="group px-5 py-1.5 mx-3 relative" href="/Public/Html/About.html">
+                    Tentang Kami
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-[2px] bg-current transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a class="group px-5 py-1.5 mx-3 relative" href="/Public/Html/Kuisioner.html">
+                    Kuisioner Harian
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-[2px] bg-current transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a class="group px-5 py-1.5 mx-3 relative" href="/Public/Html/Artikel.html">
+                    Artikel
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-[2px] bg-current transition-all duration-300 group-hover:w-full"></span>
+                </a>
                 <div class="flex items-center justify-center">
-                    <a class="px-5 mx-3 bg-darkBlue text-whiteCream rounded-sm" href="Login.html">Login</a>
+                    <a class="px-5 py-1.5 mx-3 bg-blue-500 text-whiteCream rounded-sm hover:bg-blue-700"
+                        href="Login.html">Login</a>
                 </div>
             </div>
         </div>
     </nav>
     <section class="h-[2000px] mx-6">
+
         <!-- Konten di sini untuk scroll -->
         <div class="w-full h-14"></div>
         <section class="flex  justify-between items-center">
             <div class="text-white py-7">
-                <div class=" w-800 [text-shadow:_2px_2px_4px_rgba(0,0,0,0.3)]">
+                <div class=" w-[800px] [text-shadow:_2px_2px_4px_rgba(0,0,0,0.3)]">
                     <h3 class=" text-5xl font-semibold leading-snug text-darkBlue ">
                         Merawat Kesehatan Mental Anda, Karena Anda Berharga
                     </h3>
@@ -139,29 +107,29 @@
                 </div>
                 <div class="mt-5 rounded">
                     <button
-                        class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-3xl shadow-[0_4px_8px_rgba(0,0,0,0.2)] hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                        class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-3xl shadow-[0_4px_8px_rgba(0,0,0,0.2)] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
                         Test diagnosa gratis >>
                     </button>
                 </div>
             </div>
             <div>
-                <img src=" /Assets/2.png" class="w-500 h-500" alt="Img2">
+                <img src=" /Assets/2.png" class="w-[500px] h-[500px]" alt="Img2">
             </div>
         </section>
         <section class=" bg-lightGreen rounded-3xl overflow-hidden">
-            <div class="flex justify-between">
+            <div class="flex ">
                 <!-- Gambar dengan rotasi Y -->
-                <div class="[transform:_rotateY(180deg)]">
-                    <img src="/Assets/3.png" class="w-375 h-375" alt="Img2">
+                <div class="[transform:_rotateY(180deg)] mr-28">
+                    <img src="/Assets/3.png" class="w-[375px]" alt="Img2">
                 </div>
 
                 <!-- Kontainer Teks -->
-                <div class="w-817 flex items-center mr-20">
+                <div class="w-[817px] flex items-center mr-20">
                     <div class="[text-shadow:_2px_2px_4px_rgba(0,0,0,0.3)]">
                         <h3 class="text-5xl font-semibold leading-snug text-darkBlue">
                             Kenapa Sih Kesehatan Mental Itu Penting??
                         </h3>
-                        <p class="text-sm font-normal">
+                        <p class="text-sm font-normal mt-4">
                             Kesehatan mental penting karena memengaruhi bagaimana kita berpikir, merasa, dan bertindak
                             dalam kehidupan sehari-hari. Kesehatan mental yang baik membantu kita menghadapi stres,
                             menjaga hubungan, membuat keputusan, dan meraih potensi diri. Jika kesehatan mental
@@ -175,9 +143,9 @@
                 <!-- Kontainer Teks -->
                 <div class="flex justify-between">
                     <!-- Kontainer Teks -->
-                    <div class="w-817 flex  mt-5 ml-20 mr-9">
+                    <div class="w-[817px] flex mt-5 ml-20 mr-9">
                         <div class="[text-shadow:_2px_2px_4px_rgba(0,0,0,0.3)]">
-                            <div class="w-500 h-20">
+                            <div class="w-[500px] h-20">
                                 <div class="font-medium text-2xl text-darkBlue">
                                     <h4>Yuk! kenali perasaanmu</h4>
                                 </div>
@@ -185,28 +153,28 @@
                                 <div class="flex space-x-4 mt-3">
                                     <!-- Pilihan 1 -->
                                     <button
-                                        class="menu-item px-4 py-2 bg-blue-500 border-2 border-blue-500 text-white rounded-lg w-[132px] h-[42px] text-center transition-colors"
+                                        class="menu-item px-4 py-2 bg-blue-500 border-2 border-blue-500 text-white rounded-lg w-[132px] h-[42px] text-center transition-all duration-200 shadow-[4px_4px_0_rgba(0,0,0,0.25)] hover:shadow-[2px_2px_0_rgba(0,0,0,0.25)] active:shadow-[0_0_0_rgba(0,0,0,0.25)] active:translate-y-1"
                                         data-value="1">
                                         Depresi
                                     </button>
 
                                     <!-- Pilihan 2 -->
                                     <button
-                                        class="menu-item px-4 py-2 bg-white border-2 border-blue-500 text-black hover:bg-blue-500 hover:text-white rounded-lg w-[132px] h-[42px] text-center transition-colors"
+                                        class="menu-item px-4 py-2 bg-blue-500 border-2 border-blue-500 text-white rounded-lg w-[132px] h-[42px] text-center transition-all duration-200 shadow-[4px_4px_0_rgba(0,0,0,0.25)] hover:shadow-[2px_2px_0_rgba(0,0,0,0.25)] active:shadow-[0_0_0_rgba(0,0,0,0.25)] active:translate-y-1"
                                         data-value="2">
                                         Bipolar
                                     </button>
 
                                     <!-- Pilihan 3 -->
                                     <button
-                                        class="menu-item px-4 py-2 bg-white border-2 border-blue-500 text-black hover:bg-blue-500 hover:text-white rounded-lg w-[132px] h-[42px] text-center transition-colors"
+                                        class="menu-item px-4 py-2 bg-blue-500 border-2 border-blue-500 text-white rounded-lg w-[132px] h-[42px] text-center transition-all duration-200 shadow-[4px_4px_0_rgba(0,0,0,0.25)] hover:shadow-[2px_2px_0_rgba(0,0,0,0.25)] active:shadow-[0_0_0_rgba(0,0,0,0.25)] active:translate-y-1"
                                         data-value="3">
                                         Skizofrenia
                                     </button>
 
                                     <!-- Pilihan 4 -->
                                     <button
-                                        class="menu-item px-4 py-2 bg-white border-2 border-blue-500 text-black hover:bg-blue-500 hover:text-white rounded-lg w-[132px] h-[42px] text-center transition-colors"
+                                        class="menu-item px-4 py-2 bg-blue-500 border-2 border-blue-500 text-white rounded-lg w-[132px] h-[42px] text-center transition-all duration-200 shadow-[4px_4px_0_rgba(0,0,0,0.25)] hover:shadow-[2px_2px_0_rgba(0,0,0,0.25)] active:shadow-[0_0_0_rgba(0,0,0,0.25)] active:translate-y-1"
                                         data-value="4">
                                         Kecemasan
                                     </button>
@@ -219,9 +187,10 @@
                 </div>
 
 
+
                 <!-- Gambar dengan rotasi Y -->
                 <div class=" mr-20 mb-20 [transform:_rotateY(180deg)]">
-                    <img src="/Assets/4.png" class="w-400 " alt="Img2">
+                    <img src="/Assets/4.png" class="w-[400px] " alt="Img2">
                 </div>
 
             </div>
