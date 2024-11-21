@@ -1,3 +1,12 @@
+
+const hamburger = document.getElementById('hamburger');
+const menu = document.getElementById('menu');
+
+hamburger.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+});
+
+
 const buttons = document.querySelectorAll('.menu-item');
 const description = document.getElementById('description');
 
