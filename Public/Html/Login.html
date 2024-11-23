@@ -17,7 +17,7 @@
         }
 
         body {
-            background-image: url('/Assets/1.png');
+            background-image: url('1.png');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -40,13 +40,32 @@
             color: #1230AE;
         }
 
-        nav {
-            z-index: 50;
-            position: relative;
+        .text-whiteCream {
+            color: #FFF7F7;
+        }
+
+        @media (max-width: 768px) {
+            .menu {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.active {
+                display: block;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: white; /* Adjust as needed */
+                width: 100%;
+                z-index: 10;
+            }
         }
     </style>
 
-    <title>Login/Signup</title>
+    <title>Mind Care | Masuk</title>
 </head>
 
 <body class="bg-lightBlue">
@@ -60,16 +79,42 @@
                     <p>MIND CARE</p>
                 </div>
             </div>
+
             <div class="hidden lg:flex text-center items-center">
-                <a class="group px-5 py-1.5 mx-3 relative" href="/Public/Html/index.html">Home</a>
-                <a class="group px-5 py-1.5 mx-3 relative" href="/Public/Html/About.html">Tentang Kami</a>
-                <a class="group px-5 py-1.5 mx-3 relative" href="/Public/Html/Kuisioner.html">Kuisioner Harian</a>
-                <a class="group px-5 py-1.5 mx-3 relative" href="/Public/Html/Artikel.html">Artikel</a>
+                <a class="group px-5 py-1.5 mx-3 relative" href="/Public/Html/index.html">
+                    Home
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-[2px] bg-current transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a class="group px-5 py-1.5 mx-3 relative" href="/Public/Html/About.html">
+                    Tentang Kami
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-[2px] bg-current transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a class="group px-5 py-1.5 mx-3 relative" href="/Public/Html/Kuisioner.html">
+                    Kuisioner Harian
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-[2px] bg-current transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a class="group px-5 py-1.5 mx-3 relative" href="/Public/Html/Artikel.html">
+                    Artikel
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-[2px] bg-current transition-all duration-300 group-hover:w-full"></span>
+                </a>
             </div>
+
             <div class="flex items-center justify-center">
-                <a class="px-5 py-1.5 mx-3 bg-blue-500 text-whiteCream rounded-sm hover:bg-blue-700" href="Login.html">Login</a>
+                <a class="px-5 py-1.5 mx-3 bg-blue-500 text-whiteCream rounded-sm hover:bg-blue-700"
+                    href="Login.html">Login</a>
             </div>
         </div>
+        <div id="menu" class=" z-50 lg:hidden hidden bg-lightGreen text-darkBlue absolute left-0 w-full shadow-md">
+            <a class="block px-5 py-2" href="/Public/Html/index.html">Home</a>
+            <a class="block px-5 py-2" href="/Public/Html/About.html">Tentang Kami</a>
+            <a class="block px-5 py-2" href="/Public/Html/Kuisioner.html">Kuisioner Harian</a>
+            <a class="block px-5 py-2" href="/Public/Html/Artikel.html">Artikel</a>
+        </div>
+
     </nav>
 
     <section class="h-auto">
@@ -77,26 +122,30 @@
         <section class="flex flex-col md:flex-row justify-center items-center mx-6">
             <!-- Login/Signup Box -->
             <div class="bg-lightGreen rounded-xl shadow-lg p-6 md:w-1/2 lg:w-1/3 mb-6 md:mb-0">
-                <h3 class="text-2xl font-semibold text-darkBlue mb-4">Masuk</h3>
+                <h3 class="text-2xl flex justify-center font-semibold text-darkBlue mb-4">Masuk</h3>
                 <form id="login-form">
                     <div class="mb-4">
-                        <label for="username" class="block text-sm font-medium text-darkBlue mb-1">Username</label>
+                        <label for="username" class="block text-sm font-medium text-darkBlue mb-1">Username
+                            <span class="text-red-500 ml-0">*</span>
+                        </label>
                         <input type="username" id="username" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-darkBlue" required>
                     </div>
                     <div class="mb-4">
-                        <label for="password" class="block text-sm font-medium text-darkBlue mb-1">Password</label>
+                        <label for="password" class="block text-sm font-medium text-darkBlue mb-1">Password
+                            <span class="text-red-500 ml-0">*</span>
+                        </label>
                         <input type="password" id="password" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-darkBlue" required>
                     </div>
-                    <button type="submit" class="w-full bg-darkBlue text-white py-2 rounded-md hover:bg-blue-800 transition duration-200">Login</button>
+                    <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-700 transition-all duration-200 shadow-[4px_4px_0_rgba(0,0,0,0.25)] hover:shadow-[2px_2px_0_rgba(0,0,0,0.25)] active:shadow-[0_0_0_rgba(0,0,0,0.25)] active:translate-y-1 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Masuk</button>
                 </form>
                 <p class="text-sm text-darkBlue mt-4 text-center">
-                    Belum punya akun? <a href="#" class="text-blue-500 hover:underline">Daftar</a>
+                    Belum punya akun? <a href="le1 - Copy.html" class="text-blue-500 hover:underline">Daftar</a>
                 </p>
             </div>
 
             <!-- Image -->
             <div class="md:w-1/2">
-                <img src="/Assets/5.png" alt="Illustration" class="w-full ">
+                <img src="5.png" alt="Illustration" class="w-100 h-auto ml-8 translate-y-2">
             </div>
         </section>
     </section>
