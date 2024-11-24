@@ -12,6 +12,10 @@ document.getElementById('login-form').addEventListener('submit', function (e) {
         errorShow("Password salah!");
         return;
     }
+    
+    // Simpan username pengguna yang sedang login ke localStorage
+    localStorage.setItem("currentUser", username);
+    
     alert("Login berhasil!");
     window.location.href = "index.html";
 });

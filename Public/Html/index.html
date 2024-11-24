@@ -50,19 +50,15 @@
 
             .text-5xl {
                 font-size: 2.5rem;
-                /* Ukuran font lebih kecil pada layar kecil */
             }
 
             .text-2xl {
                 font-size: 1.5rem;
-                /* Ukuran font lebih kecil pada layar kecil */
             }
 
             .menu-item {
                 flex: 1;
-                /* Tombol mengambil ruang yang sama */
                 margin-bottom: 0.5rem;
-                /* Spasi antar tombol */
             }
         }
         
@@ -82,7 +78,6 @@
             background-color: #ADBDF7;
         }
 
-    
         .text-darkBlue {
             color: #1230AE;
         }
@@ -104,10 +99,10 @@
 
 <body class="bg-lightBlue">
     <nav class="fixed w-full bg-lightGreen text-darkBlue z-50 shadow-[0_4px_8px_rgba(0,0,0,0.2)]">
-        <div class="px-6 py-3 flex justify-between items-center">
+        <div class="px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
                 <!-- Hamburger Icon -->
-                <button id="hamburger" class="block lg:hidden px-2 py-1 text-white">
+                <button id="hamburger" class="block lg:hidden py-1 text-white">
                     <i class="fa-solid fa-bars "></i>
                 </button>
                 <div class="font-serif text-xl font-bold italic mx-2">
@@ -178,7 +173,7 @@
                 <div class="mt-5 rounded">
                     <button
                         class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-3xl transition-all duration-200 shadow-[4px_4px_0_rgba(0,0,0,0.25)] hover:shadow-[2px_2px_0_rgba(0,0,0,0.25)] active:shadow-[0_0_0_rgba(0,0,0,0.25)] active:translate-y-1 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
-                        Test diagnosa gratis >>
+                        <a href="/Public/Html/Kuisioner.html">Test diagnosa gratis >></a>
                     </button>
                 </div>
             </div>
@@ -188,11 +183,11 @@
             <div class="flex flex-col md:flex-row">
                 <!-- Gambar dengan rotasi Y -->
                 <div class="[transform:_rotateY(180deg)] mb-6 md:mr-16">
-                    <img src="/Assets/3.png" class="w-full max-w-[375px] h-auto" alt="Img2">
+                    <img src="/Assets/3.png" class="w-full max-w-[400px] h-auto" alt="Img2">
                 </div>
 
                 <!-- Kontainer Teks -->
-                <div class="flex items-center px-3 md:px-0 mb-6 md:mb-0 md:w-[817px]">
+                <div class="flex items-center px-3 md:px-3 mb-6 md:mb-0 md:w-[817px]">
                     <div class="[text-shadow:_2px_2px_4px_rgba(0,0,0,0.3)]">
                         <h3 class="text-3xl md:text-[50px] font-semibold leading-snug md:leading-[72px] text-darkBlue">
                             Kenapa Sih Kesehatan Mental Itu Penting??
@@ -257,6 +252,56 @@
                 <!-- Gambar dengan rotasi Y -->
                 <div class="mr-20 mb-10 [transform:_rotateY(180deg)]">
                     <img src="/Assets/4.png" class="w-full max-w-[400px] h-auto" alt="Img2">
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-lightGreen rounded-3xl overflow-hidden my-5 mx-4 md:mx-6 p-16 bg-white">
+            <div class="container mx-auto text-center">
+                <h2 class="text-2xl font-semibold text-blue-600">Artikel</h2>
+                <p class="m-2 text-gray-600">Baca artikel menarik seputar kesehatan mental</p>
+
+                <!-- Tombol ubah tampilan artikel-->
+                <div class="flex items-center space-x-8 border-t-2 border-white pt-4">
+                    <button class="text-white font-medium hover:underline focus:underline"
+                        onclick="showContent('depresi')">Depresi</button>
+                    <div class="h-6 w-0.5 bg-white"></div>
+                    <button class="text-white font-medium hover:underline focus:underline"
+                        onclick="showContent('bipolar')">Bipolar</button>
+                    <div class="h-6 w-0.5 bg-white"></div>
+                    <button class="text-white font-medium hover:underline focus:underline"
+                        onclick="showContent('skizofrenia')">Skizofrenia</button>
+                    <div class="h-6 w-0.5 bg-white"></div>
+                    <button class="text-white font-medium hover:underline focus:underline"
+                        onclick="showContent('kecemasan')">Kecemasan</button>
+                </div>
+
+                <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Konten Artikel-->
+                    <div id="depresi" class="bg-blue-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold text-blue-500">Judul Artikel</h3>
+                        <p class="mt-2 text-gray-600">Deskripsi singkat tentang artikel ini...</p>
+                    </div>
+                    <div id="depresi" class="bg-blue-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold text-blue-500">Judul Artikel</h3>
+                        <p class="mt-2 text-gray-600">Deskripsi singkat tentang artikel ini...</p>
+                    </div>
+                    <div id="bipolar" class="bg-blue-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold text-blue-500">Judul Artikel</h3>
+                        <p class="mt-2 text-gray-600">Deskripsi singkat tentang artikel ini...</p>
+                    </div>
+                    <div id="bipolar" class="bg-blue-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold text-blue-500">Judul Artikel</h3>
+                        <p class="mt-2 text-gray-600">Deskripsi singkat tentang artikel ini...</p>
+                    </div>
+                    <div id="skizofrenia" class="bg-blue-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold text-blue-500">Judul Artikel</h3>
+                        <p class="mt-2 text-gray-600">Deskripsi singkat tentang artikel ini...</p>
+                    </div>
+                    <div id="kecemasan" class="bg-blue-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold text-blue-500">Judul Artikel</h3>
+                        <p class="mt-2 text-gray-600">Deskripsi singkat tentang artikel ini...</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -385,6 +430,9 @@
                 <p class="text-sm text-center text-gray-600">© Copyright 2024, All Rights Reserved by Mindcare</p>
             </div>
         </section>
+
+
+
 
     </section>
 
