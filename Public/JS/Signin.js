@@ -13,12 +13,13 @@ document.getElementById('signin-form').addEventListener('submit', function (e) {
     alert("Akun berhasil dibuat!");
     window.location.href = 'Login.html';
 });
+
 function errorShow(message) {
     const modal = document.getElementById('error-modal');
     const errorMessage = document.getElementById('error-message');
     errorMessage.textContent = message;
     modal.classList.remove('hidden');
-    document.getElementById('close-modal').addEventListener('click', function() {
+    document.getElementById('close-modal').addEventListener('click', function () {
         modal.classList.add('hidden');
     });
 }
