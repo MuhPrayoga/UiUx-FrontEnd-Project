@@ -90,14 +90,41 @@ updateContent('1');
 
 // script Artikel
 // Fungsi untuk memperbarui tampilan artikel
-function showContent(id) {
-    // Sembunyikan semua konten
-    const contents = document.querySelectorAll('[id^="depresi"], [id^="bipolar"], [id^="skizofrenia"], [id^="kecemasan"]');
-    contents.forEach(content => content.classList.add('hidden'));
+function showContent(type) {
+    // Menyembunyikan semua artikel
+    const articles = document.querySelectorAll('.bg-blue-50');
+    articles.forEach(article => {
+        article.classList.add('hidden');
+    });
 
-    // Tampilkan konten sesuai ID yang dipilih
-    const selectedContent = document.getElementById(id);
-    if (selectedContent) {
-        selectedContent.classList.remove('hidden');
+    // Menampilkan artikel berdasarkan tipe
+    if (type === 'depresi') {
+        document.getElementById('depresi-1').classList.remove('hidden');
+        document.getElementById('depresi-2').classList.remove('hidden');
+        document.getElementById('depresi-3').classList.remove('hidden');
+        document.getElementById('depresi-4').classList.remove('hidden');
+        document.getElementById('depresi-5').classList.remove('hidden');
+        document.getElementById('depresi-6').classList.remove('hidden');
+    } else if (type === 'bipolar') {
+        document.getElementById('bipolar-1').classList.remove('hidden');
+        document.getElementById('bipolar-2').classList.remove('hidden');
+        document.getElementById('bipolar-3').classList.remove('hidden');
+        document.getElementById('bipolar-4').classList.remove('hidden');
+        document.getElementById('bipolar-5').classList.remove('hidden');
+        document.getElementById('bipolar-6').classList.remove('hidden');
+    } else if (type === 'skizofrenia') {
+        document.getElementById('skizofrenia-1').classList.remove('hidden');
+        document.getElementById('skizofrenia-2').classList.remove('hidden');
+        document.getElementById('skizofrenia-3').classList.remove('hidden');
+        document.getElementById('skizofrenia-4').classList.remove('hidden');
+        document.getElementById('skizofrenia-5').classList.remove('hidden');
+        document.getElementById('skizofrenia-6').classList.remove('hidden');
+    } else if (type === 'kecemasan') {
+        document.getElementById('kecemasan-1').classList.remove('hidden');
+        document.getElementById('kecemasan-2').classList.remove('hidden');
+        document.getElementById('kecemasan-3').classList.remove('hidden');
+        document.getElementById('kecemasan-4').classList.remove('hidden');
+        document.getElementById('kecemasan-5').classList.remove('hidden');
+        document.getElementById('kecemasan-6').classList.remove('hidden');
     }
 }
