@@ -1,4 +1,4 @@
-
+//Script seection2
 const hamburger = document.getElementById('hamburger');
 const menu = document.getElementById('menu');
 
@@ -45,6 +45,7 @@ buttons.forEach(button => {
 // Set tampilan awal (Pilihan 1)
 updateContent('1');
 
+// script Artikel
 // Fungsi untuk memperbarui tampilan artikel
 function showContent(id) {
     // Sembunyikan semua konten
