@@ -18,6 +18,20 @@
         * {
             font-family: 'Poppins', sans-serif;
         }
+
+        body {
+            background-image: url('/Assets/1.png');
+            background-size: cover; /* Membuat gambar menutupi seluruh layar */
+            background-repeat: no-repeat; /* Tidak mengulang gambar */
+            background-attachment: fixed; /* Gambar tetap (tidak ikut scroll) */
+            background-position: center; /* Memposisikan gambar di tengah */
+        }
+        
+        .text-whiteshadow-lg {
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.655); /* Lighter shadow for black text */
+        }
+
+
         .text-shadow-lg {
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Efek shadow besar */
         }
@@ -169,27 +183,25 @@
             <!-- First Row -->
             <div class="flex flex-col md:flex-row items-center mb-16 md:mb-20">
                 <img src="/Assets/6.png" alt="Illustration 1" class="max-w-md w-full mx-4 rounded-lg">
-                <div class="flex-1 text-white text-lg leading-relaxed mx-4 mt-4 md:mt-0">
+                <div class="flex-1 text-black text-lg leading-relaxed mx-4 mt-4 md:mt-0">
                     <p class="text-shadow-lg">
-                        Selamat datang di MindCare, mitra terpercaya Anda dalam menjaga kesehatan mental dan
-                        kesejahteraan.
-                        Di MindCare, kami percaya bahwa kesehatan mental sama pentingnya dengan kesehatan fisik, dan
-                        kami
-                        hadir untuk menciptakan ruang aman bagi semua orang untuk belajar, berkembang, dan pulih.</p>
+                        Selamat datang di MindCare, mitra terpercaya Anda dalam menjaga kesehatan mental dan kesejahteraan.
+                        Di MindCare, kami percaya bahwa kesehatan mental sama pentingnya dengan kesehatan fisik, dan kami
+                        hadir untuk menciptakan ruang aman bagi semua orang untuk belajar, berkembang, dan pulih.
+                    </p>
                 </div>
             </div>
 
             <!-- Second Row -->
             <div class="flex flex-col md:flex-row items-center mb-16 md:mb-20">
-                <div class="flex-1 text-white text-lg leading-relaxed mx-4 mt-4 md:mt-0 order-2 md:order-1">
+                <div class="flex-1 text-black text-lg leading-relaxed mx-4 mt-4 md:mt-0 order-2 md:order-1">
                     <p class="text-shadow-lg">
                         Misi kami adalah memberdayakan individu untuk mengambil langkah dalam merawat kesehatan mental
-                        mereka dengan menyediakan sumber daya yang mudah diakses, artikel yang informatif, dan panduan
-                        dari
+                        mereka dengan menyediakan sumber daya yang mudah diakses, artikel yang informatif, dan panduan dari
                         para profesional. Apapun kebutuhan Anda memahami emosi, mencari dukungan untuk tantangan yang
-                        dihadapi, atau sekadar mengeksplorasi cara meningkatkan kesejahteraan secara
-                        keseluruhan—MindCare
-                        siap menemani Anda di setiap langkah.</p>
+                        dihadapi, atau sekadar mengeksplorasi cara meningkatkan kesejahteraan secara keseluruhan—MindCare
+                        siap menemani Anda di setiap langkah.
+                    </p>
                 </div>
                 <img src="/Assets/7.png" alt="Illustration 2"
                     class="max-w-md w-full mx-4 rounded-lg order-1 md:order-2">
@@ -198,10 +210,9 @@
             <!-- Third Row -->
             <div class="flex flex-col md:flex-row items-center mb-16 md:mb-20">
                 <img src="/Assets/8.png" alt="Illustration 3" class="max-w-md w-full mx-4 rounded-lg">
-                <div class="flex-1 text-white text-lg leading-relaxed mx-4 mt-4 md:mt-0">
+                <div class="flex-1 text-black text-lg leading-relaxed mx-4 mt-4 md:mt-0">
                     <p class="text-shadow-lg">
-                        Kami berkomitmen untuk membangun komunitas yang penuh kasih dan pengertian. Melalui platform
-                        ini,
+                        Kami berkomitmen untuk membangun komunitas yang penuh kasih dan pengertian. Melalui platform ini,
                         kami berusaha untuk menghancurkan stigma seputar kesehatan mental, mendorong percakapan terbuka,
                         dan menginspirasi perubahan positif.</p>
                 </div>
@@ -211,11 +222,10 @@
 
     <section class="text-center py-10">
         <div class="max-w-4xl mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center">
-                <p class="text-white mt-8 text-xl font-semibold text-shadow-lg">
-                    Di MindCare, kesehatan mental Anda adalah prioritas kami. Bersama-sama, mari kita bangun masa depan
-                    yang
-                    lebih sehat dan bahagia.
+            <div class="flex flex-col md:flex-row items-center mb-4 md:mb-20">
+                <p class="text-white mt-8 text-xl font-semibold text-whiteshadow-lg">
+                    Di MindCare, kesehatan mental Anda adalah prioritas kami. <br>
+                    Bersama-sama, mari kita bangun masa depan yang lebih sehat dan bahagia.
                 </p>
             </div>
     </section>
