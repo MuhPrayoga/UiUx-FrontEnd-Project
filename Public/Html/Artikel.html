@@ -98,11 +98,11 @@
 
 <body class="bg-lightBlue">
     <nav class="fixed w-full bg-lightGreen text-darkBlue z-50 shadow-[0_4px_8px_rgba(0,0,0,0.2)]">
-        <div class="px-6 py-3 flex justify-between items-center">
+        <div class="px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
                 <!-- Hamburger Icon -->
-                <button id="hamburger" class="block lg:hidden px-2 py-1 text-white">
-                    <i class="fa-solid fa-bars "></i>
+                <button id="hamburger" class="block lg:hidden py-1 text-white">
+                    <i class="fa-solid fa-bars"></i>
                 </button>
                 <div class="font-serif text-xl font-bold italic mx-2">
                     <p>MIND CARE</p>
@@ -133,17 +133,26 @@
             </div>
 
             <div class="flex items-center justify-center">
+                <!-- Profile Icon with Dropdown -->
+                <div class="relative hidden" id="profile-container">
+                    <a id="profile-icon" class="px-5 py-1.5 mx-3 text-darkBlue" href="#">
+                        <i class="fa-solid fa-user"></i>
+                        <span id="username-text" class="text-lg font-medium"></span>
+                    </a>
+                    <div id="profile-dropdown"
+                        class="hidden absolute right-0 mt-2 w-48 bg-white text-darkBlue shadow-md rounded-lg">
+                        <a class="block px-4 py-2 hover:bg-lightGreen" href="#" id="logout-button">Log Out</a>
+                    </div>
+                </div>
+
                 <a id="login-button"
                     class="text-sm px-5 py-1.5 mx-3 bg-blue-500 text-whiteCream rounded-sm hover:bg-blue-700"
                     href="Login.html">Log In/Sign Up</a>
-                <a id="profile-icon" class="hidden px-5 py-1.5 mx-3 text-darkBlue" href="Profile.html">
-                    <i class="fa-solid fa-user"></i>
-                </a>
             </div>
         </div>
 
         <!-- Hamburger Menu -->
-        <div id="menu" class=" z-50 lg:hidden hidden bg-lightGreen text-darkBlue absolute left-0 w-full shadow-md">
+        <div id="menu" class="z-50 lg:hidden hidden bg-lightGreen text-darkBlue absolute left-0 w-full shadow-md">
             <a class="block px-5 py-2" href="/Public/Html/index.html">Home</a>
             <a class="block px-5 py-2" href="/Public/Html/About.html">Tentang Kami</a>
             <a class="block px-5 py-2" href="/Public/Html/Kuisioner.html">Kuisioner Harian</a>
@@ -151,7 +160,7 @@
         </div>
     </nav>
 
-    <section class="h-[auto]">
+    <section class="py-16 h-[auto]">
         <section class="bg-lightGreen rounded-3xl overflow-hidden mx-4 md:mx-6 p-16 bg-white">
             <div class="container mx-auto text-center">
                 <h2 class="text-2xl font-semibold text-blue-600 mt-5">Artikel</h2>
