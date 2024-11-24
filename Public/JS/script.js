@@ -10,11 +10,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const currentUser = localStorage.getItem("currentUser");
     const profileContainer = document.getElementById("profile-container");
     const loginButton = document.getElementById("login-button");
+    const usernameText = document.getElementById("username-text");
 
     // Jika ada pengguna yang sedang login
     if (currentUser) {
         profileContainer.classList.remove("hidden"); // Tampilkan ikon profil
         loginButton.classList.add("hidden"); // Sembunyikan tombol login
+        usernameText.textContent = currentUser;
     } else {
         profileContainer.classList.add("hidden"); // Sembunyikan ikon profil
         loginButton.classList.remove("hidden"); // Tampilkan tombol login
