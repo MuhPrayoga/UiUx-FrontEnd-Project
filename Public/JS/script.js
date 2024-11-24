@@ -6,6 +6,28 @@ document.getElementById('profile-icon').addEventListener('click', function (even
     dropdown.classList.toggle('hidden'); // Toggle visibility of the dropdown
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    const currentUser = localStorage.getItem("currentUser ");
+    const profileContainer = document.getElementById("profile-container");
+    const loginButton = document.getElementById("login-button");
+
+    // Jika ada pengguna yang sedang login
+    if (currentUser) {
+        profileContainer.classList.remove("hidden"); // Tampilkan ikon profil
+        loginButton.classList.add("hidden"); // Sembunyikan tombol login
+    } else {
+        profileContainer.classList.add("hidden"); // Sembunyikan ikon profil
+        loginButton.classList.remove("hidden"); // Tampilkan tombol login
+    }
+
+    // Logout functionality
+    document.getElementById('logout-button').addEventListener('click', function () {
+        localStorage.removeItem("currentUser "); // Hapus pengguna dari localStorage
+        alert("Anda telah berhasil logout!");
+        window.location.reload(); // Muat ulang halaman untuk memperbarui tampilan
+    });
+});
+
 // Optional: Add event listener for logout button
 document.getElementById('logout-button').addEventListener('click', function () {
     // Implement your logout logic here
