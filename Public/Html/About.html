@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Head content from Index.html -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About MindCare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/Public/JS/script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style type="text/tailwindcss">
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        .text-shadow-lg {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Efek shadow besar */
+        }
+
+        body {
+            background-color: #AAB8F9;
+        }
+
+        /* Custom styles for the hamburger menu */
+        .menu {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .menu {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.active {
+                display: block;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: white;
+                width: 100%;
+                z-index: 10;
+            }
+
+            .text-5xl {
+                font-size: 2.5rem;
+            }
+
+            .text-2xl {
+                font-size: 1.5rem;
+            }
+
+            .menu-item {
+                flex: 1;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        .bg-lightGreen {
+            background-color: #7CF5FF;
+        }
+
+        .bg-darkBlue {
+            background-color: #1230AE;
+        }
+
+        .bg-whiteCream {
+            background-color: #FFF7F7;
+        }
+
+        .bg-lightBlue {
+            background-color: #ADBDF7;
+        }
+
+        .text-darkBlue {
+            color: #1230AE;
+        }
+
+        .text-whiteCream {
+            color: #FFF7F7;
+        }
+
+        nav {
+            z-index: 50;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header from Index.html -->
+    <nav class="fixed w-full bg-lightGreen text-darkBlue z-50 shadow-[0_4px_8px_rgba(0,0,0,0.2)]">
+        <div class="px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <!-- Hamburger Icon -->
+                <button id="hamburger" class="block lg:hidden px-2 py-1 text-white">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="font-serif text-xl font-bold italic mx-2">
+                    <p>MIND CARE</p>
+                </div>
+            </div>
+
+            <div class="hidden lg:flex text-center items-center">
+                <a class="group px-5 py-1.5 mx-3 relative" href="/Public/Html/index.html">
+                    Home
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-[2px] bg-current transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a class="group px-5 py-1.5 mx-3 relative" href="/Public/Html/About.html">
+                    Tentang Kami
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-[2px] bg-current transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a class="group px-5 py-1.5 mx-3 relative" href="/Public/Html/Kuisioner.html">
+                    Kuisioner Harian
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-[2px] bg-current transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a class="group px-5 py-1.5 mx-3 relative" href="/Public/Html/Artikel.html">
+                    Artikel
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-[2px] bg-current transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </div>
+
+            <div class="flex items-center justify-center">
+                <a id="login-button"
+                    class="text-sm px-5 py-1.5 mx-3 bg-blue-500 text-whiteCream rounded-sm hover:bg-blue-700"
+                    href="Login.html">Log In/Sign Up</a>
+                <a id="profile-icon" class="hidden px-5 py-1.5 mx-3 text-darkBlue" href="Profile.html">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Hamburger Menu -->
+        <div id="menu" class="z-50 lg:hidden hidden bg-lightGreen text-darkBlue absolute left-0 w-full shadow-md">
+            <a class="block px-5 py-2" href="/Public/Html/index.html">Home</a>
+            <a class="block px-5 py-2" href="/Public/Html/About.html">Tentang Kami</a>
+            <a class="block px-5 py-2" href="/Public/Html/Kuisioner.html">Kuisioner Harian</a>
+            <a class="block px-5 py-2" href="/Public/Html/Artikel.html">Artikel</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="pt-20">
+        <div class="main-section max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="section-header text-center mb-80 md:mb-36">
+                <h1 class="text-4xl font-bold text-darkBlue">About MindCare</h1>
+            </div>
+
+            <!-- First Row -->
+            <div class="flex flex-col md:flex-row items-center mb-16 md:mb-20">
+                <img src="6.png" alt="Illustration 1" class="max-w-md w-full mx-4 rounded-lg">
+                <div class="flex-1 text-white text-lg leading-relaxed mx-4 mt-4 md:mt-0">
+                    <p class="text-shadow-lg">
+                        Selamat datang di MindCare, mitra terpercaya Anda dalam menjaga kesehatan mental dan kesejahteraan.
+                        Di MindCare, kami percaya bahwa kesehatan mental sama pentingnya dengan kesehatan fisik, dan kami
+                        hadir untuk menciptakan ruang aman bagi semua orang untuk belajar, berkembang, dan pulih.</p>
+                </div>
+            </div>
+
+            <!-- Second Row -->
+            <div class="flex flex-col md:flex-row items-center mb-16 md:mb-20">
+                <div class="flex-1 text-white text-lg leading-relaxed mx-4 mt-4 md:mt-0 order-2 md:order-1">
+                    <p class="text-shadow-lg">
+                        Misi kami adalah memberdayakan individu untuk mengambil langkah dalam merawat kesehatan mental
+                        mereka dengan menyediakan sumber daya yang mudah diakses, artikel yang informatif, dan panduan dari
+                        para profesional. Apapun kebutuhan Anda memahami emosi, mencari dukungan untuk tantangan yang
+                        dihadapi, atau sekadar mengeksplorasi cara meningkatkan kesejahteraan secara keseluruhan—MindCare
+                        siap menemani Anda di setiap langkah.</p>
+                </div>
+                <img src="7.png" alt="Illustration 2"
+                    class="max-w-md w-full mx-4 rounded-lg order-1 md:order-2">
+            </div>
+
+            <!-- Third Row -->
+            <div class="flex flex-col md:flex-row items-center mb-16 md:mb-20">
+                <img src="8.png" alt="Illustration 3" class="max-w-md w-full mx-4 rounded-lg">
+                <div class="flex-1 text-white text-lg leading-relaxed mx-4 mt-4 md:mt-0">
+                    <p class="text-shadow-lg">
+                        Kami berkomitmen untuk membangun komunitas yang penuh kasih dan pengertian. Melalui platform ini,
+                        kami berusaha untuk menghancurkan stigma seputar kesehatan mental, mendorong percakapan terbuka,
+                        dan menginspirasi perubahan positif.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="text-center py-10">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+            <p class="text-white mt-8 text-xl font-semibold text-shadow-lg">
+                Di MindCare, kesehatan mental Anda adalah prioritas kami. Bersama-sama, mari kita bangun masa depan yang
+                lebih sehat dan bahagia.
+            </p>
+        </div>
+    </section>
+    
+    
+
+    <!-- Footer from Index.html -->
+    <section class="mt-3 py-5 bg-lightGreen border-t-4 border-white sm:pt-6 lg:pt-8">
+        <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+            <div class="grid grid-cols-2 md:col-span-3 lg:grid-cols-6 gap-y-16 gap-x-12">
+                <div class="col-span-2 md:col-span-3 lg:col-span-2 lg:pr-8">
+                    <div class="w-auto h-9 font-serif text-xl font-bold italic flex items-center">
+                        <p>MIND CARE</p>
+                    </div>
+
+                    <p class="text-base leading-relaxed text-gray-600 mt-7">Bulaksumur, Jl. Geografi, Kec. Mlati,
+                        Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281</p>
+
+                    <ul class="flex items-center space-x-3 mt-9">
+                        <!-- Social media icons -->
+                        <!-- Replace "#" with actual links if available -->
+                        <li>
+                            <a href="#" title=""
+                                class="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-7 h-7 hover:bg-blue-600 focus:bg-blue-600">
+                                <!-- Twitter Icon -->
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" title=""
+                                class="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-7 h-7 hover:bg-blue-600 focus:bg-blue-600">
+                                <!-- Facebook Icon -->
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" title=""
+                                class="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-7 h-7 hover:bg-blue-600 focus:bg-blue-600">
+                                <!-- Instagram Icon -->
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" title=""
+                                class="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-7 h-7 hover:bg-blue-600 focus:bg-blue-600">
+                                <!-- GitHub Icon -->
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <p class="text-sm font-semibold tracking-widest text-gray-400 uppercase">Fast link</p>
+
+                    <ul class="mt-6 space-y-4">
+                        <li>
+                            <a href="/Public/Html/About.html" title=""
+                                class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600">
+                                Tentang Kami </a>
+                        </li>
+
+                        <li>
+                            <a href="/Public/Html/Kuisioner.html" title=""
+                                class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600">
+                                Kuisioner Harian </a>
+                        </li>
+
+                        <li>
+                            <a href="/Public/Html/Artikel.html" title=""
+                                class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600">
+                                Artikel </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div>
+                    <p class="text-sm font-semibold tracking-widest text-gray-400 uppercase">Help</p>
+
+                    <ul class="mt-6 space-y-4">
+                        <li>
+                            <a href="#" title=""
+                                class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600">
+                                Customer Support </a>
+                        </li>
+
+
+                        <li>
+                            <a href="#" title=""
+                                class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600">
+                                Terms & Conditions </a>
+                        </li>
+
+                        <li>
+                            <a href="#" title=""
+                                class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600">
+                                Privacy Policy </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="mt-6 mb-6 border-gray-200" />
+
+            <p class="text-sm text-center text-gray-600">© Copyright 2024, All Rights Reserved by Mindcare</p>
+        </div>
+    </section>
+</body>
+
+</html>
