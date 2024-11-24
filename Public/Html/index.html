@@ -268,21 +268,24 @@
         <section class="bg-lightGreen rounded-3xl overflow-hidden my-5 mx-4 md:mx-6 p-16 bg-white">
             <div class="container mx-auto text-center">
                 <h2 class="text-2xl font-semibold text-blue-600">Artikel</h2>
-                <p class="m-2 text-gray-600">Baca artikel menarik seputar kesehatan mental</p>
+                <p class="m-2 pb-4 text-gray-600 border-b-2 border-white">Baca artikel menarik seputar kesehatan mental
+                </p>
 
                 <!-- Tombol ubah tampilan artikel-->
-                <div class="flex items-center space-x-8 border-t-2 border-white pt-4">
-                    <button class="text-white font-medium hover:underline focus:underline"
-                        onclick="showContent('depresi')">Depresi</button>
-                    <div class="h-6 w-0.5 bg-white"></div>
-                    <button class="text-white font-medium hover:underline focus:underline"
-                        onclick="showContent('bipolar')">Bipolar</button>
-                    <div class="h-6 w-0.5 bg-white"></div>
-                    <button class="text-white font-medium hover:underline focus:underline"
-                        onclick="showContent('skizofrenia')">Skizofrenia</button>
-                    <div class="h-6 w-0.5 bg-white"></div>
-                    <button class="text-white font-medium hover:underline focus:underline"
-                        onclick="showContent('kecemasan')">Kecemasan</button>
+                <div class="overflow-x-auto">
+                    <div class="flex items-center space-x-8  py-4 ">
+                        <button class="text-white font-medium hover:underline focus:underline"
+                            onclick="showContent('depresi')">Depresi</button>
+                        <div class="h-6 w-0.5 bg-white"></div>
+                        <button class="text-white font-medium hover:underline focus:underline"
+                            onclick="showContent('bipolar')">Bipolar</button>
+                        <div class="h-6 w-0.5 bg-white"></div>
+                        <button class="text-white font-medium hover:underline focus:underline"
+                            onclick="showContent('skizofrenia')">Skizofrenia</button>
+                        <div class="h-6 w-0.5 bg-white"></div>
+                        <button class="text-white font-medium hover:underline focus:underline"
+                            onclick="showContent('kecemasan')">Kecemasan</button>
+                    </div>
                 </div>
 
                 <div class="mt-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5">
