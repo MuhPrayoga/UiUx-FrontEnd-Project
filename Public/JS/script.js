@@ -44,3 +44,16 @@ buttons.forEach(button => {
 
 // Set tampilan awal (Pilihan 1)
 updateContent('1');
+
+// Fungsi untuk memperbarui tampilan artikel
+function showContent(id) {
+    // Sembunyikan semua konten
+    const contents = document.querySelectorAll('[id^="depresi"], [id^="bipolar"], [id^="skizofrenia"], [id^="kecemasan"]');
+    contents.forEach(content => content.classList.add('hidden'));
+
+    // Tampilkan konten sesuai ID yang dipilih
+    const selectedContent = document.getElementById(id);
+    if (selectedContent) {
+        selectedContent.classList.remove('hidden');
+    }
+}
