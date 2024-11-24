@@ -1,3 +1,28 @@
+//Script profile menu
+// JavaScript to toggle the dropdown menu
+document.getElementById('profile-icon').addEventListener('click', function (event) {
+    event.preventDefault(); // Prevent the default action
+    const dropdown = document.getElementById('profile-dropdown');
+    dropdown.classList.toggle('hidden'); // Toggle visibility of the dropdown
+});
+
+// Optional: Add event listener for logout button
+document.getElementById('logout-button').addEventListener('click', function () {
+    // Implement your logout logic here
+    alert('Logged Out');
+});
+
+// Close the dropdown if the user clicks outside of it
+window.addEventListener('click', function (event) {
+    const dropdown = document.getElementById('profile-dropdown');
+    const profileIcon = document.getElementById('profile-icon');
+
+    // Check if the click was outside the dropdown and the profile icon
+    if (!profileIcon.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.classList.add('hidden'); // Hide the dropdown
+    }
+});
+
 //Script seection2
 const hamburger = document.getElementById('hamburger');
 const menu = document.getElementById('menu');

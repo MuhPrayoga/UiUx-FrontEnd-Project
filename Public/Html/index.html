@@ -135,19 +135,19 @@
 
             <div class="flex items-center justify-center">
                 <!-- Profile Icon with Dropdown -->
-                <div class="relative">
+                <div class="relative hidden">
                     <a id="profile-icon" class="px-5 py-1.5 mx-3 text-darkBlue" href="#">
                         <i class="fa-solid fa-user"></i>
                     </a>
                     <div id="profile-dropdown"
                         class="hidden absolute right-0 mt-2 w-48 bg-white text-darkBlue shadow-md rounded-lg">
-                        <a class="block px-4 py-2 hover:bg-lightGreen" href="Profile.html">Profile</a>
                         <a class="block px-4 py-2 hover:bg-lightGreen" href="#" id="logout-button">Log Out</a>
                     </div>
                 </div>
 
-                <!-- Uncomment the following block if you want to show the login button when the user is not logged in -->
-                <!-- <a id="login-button" class="text-sm px-5 py-1.5 mx-3 bg-blue-500 text-whiteCream rounded-sm hover:bg-blue-700" href="Login.html">Log In/Sign Up</a> -->
+                <a id="login-button"
+                    class="text-sm px-5 py-1.5 mx-3 bg-blue-500 text-whiteCream rounded-sm hover:bg-blue-700"
+                    href="Login.html">Log In/Sign Up</a>
             </div>
         </div>
 
