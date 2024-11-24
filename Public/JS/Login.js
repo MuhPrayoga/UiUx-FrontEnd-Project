@@ -21,7 +21,7 @@ function errorShow(message) {
     const errorMessage = document.getElementById('error-message');
     errorMessage.textContent = message;
     modal.classList.remove('hidden');
-    document.getElementById('close-modal').addEventListener('click', function() {
+    document.getElementById('close-modal').addEventListener('click', function () {
         modal.classList.add('hidden');
     });
 }
