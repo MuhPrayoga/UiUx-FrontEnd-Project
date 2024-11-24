@@ -7,7 +7,7 @@ document.getElementById('profile-icon').addEventListener('click', function (even
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    const currentUser = localStorage.getItem("currentUser ");
+    const currentUser = localStorage.getItem("currentUser");
     const profileContainer = document.getElementById("profile-container");
     const loginButton = document.getElementById("login-button");
 
@@ -22,16 +22,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Logout functionality
     document.getElementById('logout-button').addEventListener('click', function () {
-        localStorage.removeItem("currentUser "); // Hapus pengguna dari localStorage
+        localStorage.removeItem("currentUser"); // Hapus pengguna dari localStorage
         alert("Anda telah berhasil logout!");
         window.location.reload(); // Muat ulang halaman untuk memperbarui tampilan
     });
-});
-
-// Optional: Add event listener for logout button
-document.getElementById('logout-button').addEventListener('click', function () {
-    // Implement your logout logic here
-    alert('Logged Out');
 });
 
 // Close the dropdown if the user clicks outside of it
