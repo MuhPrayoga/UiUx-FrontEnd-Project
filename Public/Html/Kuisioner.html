@@ -327,40 +327,40 @@
     <button class="home-button" onclick="location.href='../Html/index.html'"> ← Home </button>
     <div id="question-number" class="question-number">Question 1 of 5</div>
     <div class="question-frame question-container">
-      <h1 class="question-text">Ini adalah pertanyaan pilihan ganda, pilih 1 jawaban</h1>
+      <h1 class="question-text">Apa reaksi pertama Anda ketika menghadapi situasi yang penuh tekanan</h1>
       <div>
-        <div class="option" onclick="selectOption(this)">Pilihan 1</div>
-        <div class="option" onclick="selectOption(this)">Pilihan 2</div>
-        <div class="option" onclick="selectOption(this)">Pilihan 3</div>
+        <div class="option" onclick="selectOption(this)">Menjadi emosional (marah atau menangis)</div>
+        <div class="option" onclick="selectOption(this)">Menghindari situasi tersebut</div>
+        <div class="option" onclick="selectOption(this)">Tetap tenang dan mencoba mengatasinya</div>
       </div>
     </div>
     <div class="question-frame question-container" style="display:none">
-      <h1 class="question-text">Ini adalah pertanyaan checkbox, pilih lebih dari 1 jawaban</h1>
+      <h1 class="question-text">Apa saja gejala yang sering Anda alami terkait kecemasan?</h1>
       <div>
         <div class="checkbox-container" onclick="toggleCheckbox(this)">
           <input type="checkbox" id="checkbox1" onchange="validateAnswer()">
-          <label for="checkbox1">Pilihan 1</label>
+          <label for="checkbox1">Detak jantung cepat</label>
         </div>
         <div class="checkbox-container" onclick="toggleCheckbox(this)">
           <input type="checkbox" id="checkbox2" onchange="validateAnswer()">
-          <label for="checkbox2">Pilihan 2</label>
+          <label for="checkbox2">Sulit tidur</label>
         </div>
         <div class="checkbox-container" onclick="toggleCheckbox(this)">
           <input type="checkbox" id="checkbox3" onchange="validateAnswer()">
-          <label for="checkbox3">Pilihan 3</label>
+          <label for="checkbox3">Keringat berlebihan</label>
         </div>
       </div>
     </div>
     <div class="question-frame question-container" style="display:none">
-      <h1 class="question-text">Ini adalah pertanyaan text input, isi jawaban Anda</h1>
+      <h1 class="question-text">Apa yang biasanya Anda lakukan untuk mengatasi stres?</h1>
       <input type="text" class="w-full border-2 border-gray-400 p-2 rounded-md" placeholder="Tulis jawaban di sini" oninput="validateAnswer()">
     </div>
     <div class="question-frame question-container" style="display:none">
-      <h1 class="question-text">Ini adalah pertanyaan textarea, isi jawaban Anda</h1>
+      <h1 class="question-text">Ceritakan pengalaman Anda ketika menghadapi situasi yang membuat Anda merasa stres.</h1>
       <textarea class="w-full border-2 border-gray-400 p-2 rounded-md" rows="4" placeholder="Tulis jawaban di sini" oninput="validateAnswer()"></textarea>
     </div>
     <div class="question-frame question-container" style="display:none">
-      <h1 class="question-text">Ini adalah pertanyaan slider, pilih nilai antara 0-10</h1>
+      <h1 class="question-text">Seberapa puas Anda dengan kualitas tidur Anda dalam sebulan terakhir?</h1>
       <div style="display: flex; align-items: center; justify-content: center;">
         <input id="slider-input" type="range" min="0" max="10" value="0" class="w-full" oninput="updateSliderValue(this)">
         <span id="slider-value" style="margin-left: 10px;">0/10</span>
