@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mind Care - Kuisioner</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <style>
       body {
-        background-color: #D9E1FF;
-        font-family: 'Inter', sans-serif;
+        background-color: #d9e1ff;
+        font-family: "Inter", sans-serif;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -18,21 +22,80 @@
       .home-button {
         position: absolute;
         top: 20px;
-        left: 20px;
+        left: 96px; /* Sejajar dengan tombol navigasi */
+        width: 50px;
+        height: 50px;
+        border-radius: 50%; /* Membuat tombol berbentuk bulat */
+        border: 2px solid #010133; /* Border hitam */
         display: flex;
         align-items: center;
-        gap: 8px;
-        background-color: #FFF;
+        justify-content: center;
+        background-color: #fff;
         color: #010133;
-        padding: 10px 20px;
-        border-radius: 8px;
-        font-weight: bold;
         cursor: pointer;
-        border: none;
         transition: background-color 0.3s ease;
       }
 
+      .home-button i {
+        font-size: 24px;
+      }
+
       .home-button:hover {
+        background-color: #f1f1f1;
+      }
+
+      .nav-button {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%; /* Membuat tombol berbentuk bulat */
+        border: 2px solid #010133;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        color: #010133;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .nav-button i {
+        font-size: 24px;
+      }
+
+      .nav-button:hover {
+        background-color: #f1f1f1;
+      }
+
+      .nav-button:disabled {
+        background-color: #f1f1f1;
+        color: #999;
+        border-color: #999;
+        cursor: not-allowed;
+      }
+
+      .submit-button {
+        width: 80px;
+        height: 40px;
+        border-radius: 8px;
+        border: 2px solid #010133;
+        background-color: #f1f1f1;
+        color: #999;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: not-allowed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s ease;
+      }
+
+      .submit-button.active {
+        background-color: #fff;
+        color: #010133;
+        cursor: pointer;
+      }
+
+      .submit-button:hover.active {
         background-color: #f1f1f1;
       }
 
@@ -53,15 +116,15 @@
       }
 
       .question-text {
-        font-size: 28px;
+        font-size: 24px;
         font-weight: bold;
         color: #010133;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
       }
 
       .option {
         margin: 10px auto;
-        padding: 15px;
+        padding: 10px;
         width: 80%;
         border: 2px solid #010133;
         border-radius: 8px;
@@ -72,34 +135,29 @@
         transition: all 0.3s ease;
       }
 
-      .option:hover {
-        background-color: #010133;
-        color: #FFF;
-      }
-
+      .option:hover,
       .option.selected {
         background-color: #010133;
-        color: #FFF;
-        border-color: #010133;
+        color: #fff;
       }
 
       .progress-bar-container {
         background-color: #010133;
-        padding: 50px 0;
+        padding: 30px 0;
       }
 
       .progress-bar {
         width: 80%;
         height: 10px;
         margin: 0 auto;
-        background-color: #FFF;
+        background-color: #fff;
         border-radius: 5px;
         overflow: hidden;
       }
 
       .progress-bar-inner {
         height: 100%;
-        background-color: #2A94DB;
+        background-color: #2a94db;
         transition: width 0.3s ease;
       }
 
@@ -109,272 +167,152 @@
         width: 80%;
         margin: 20px auto;
       }
-
-      .nav-button {
-        background-color: #FFF;
-        color: #010133;
-        border: 2px solid #010133;
-        padding: 10px 20px;
-        border-radius: 8px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .nav-button:hover {
-        background-color: #e0e7ff;
-      }
-
-      .nav-button:disabled {
-        background-color: #f1f1f1;
-        color: #999;
-        border-color: #999;
-        cursor: not-allowed;
-      }
-
-      .checkbox-container {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin: 10px auto;
-        padding: 15px;
-        width: 80%;
-        border: 2px solid #010133;
-        border-radius: 8px;
-        background-color: transparent;
-        font-size: 18px;
-        color: #010133;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .checkbox-container:hover {
-        background-color: #010133;
-        color: #FFF;
-      }
-
-      .checkbox-container input[type="checkbox"] {
-        appearance: none;
-        width: 20px;
-        height: 20px;
-        border: 2px solid #FFF;
-        border-radius: 50%;
-        background-color: #D9E1FF;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .checkbox-container input[type="checkbox"]:checked {
-        background-color: #FFF;
-        border: 2px solid #FFF;
-      }
-
-      .checkbox-container.checked {
-        background-color: #010133;
-        color: #FFF;
-        border-color: #010133;
-      }
     </style>
-    <script>
-      let currentQuestion = 1;
-      const totalQuestions = 5;
-      const answers = Array(totalQuestions).fill(false); // Semua pertanyaan belum dijawab
-      function updateUI() {
-        console.log("Updating UI...");
-        // Update question number
-        const questionNumberEl = document.getElementById("question-number");
-        questionNumberEl.textContent = `Question ${currentQuestion} of ${totalQuestions}`;
-        // Update progress bar
-        const progressBar = document.getElementById("progress-bar-inner");
-        const answeredCount = answers.filter(answer => answer === true).length;
-        progressBar.style.width = `${(answeredCount / totalQuestions) * 100}%`;
-        // Display the correct question frame
-        const allFrames = document.querySelectorAll(".question-frame");
-        allFrames.forEach((frame, index) => {
-          frame.style.display = index === currentQuestion - 1 ? "block" : "none";
-        });
-        // Update navigation buttons
-        const prevButton = document.getElementById("prev-button");
-        const nextButton = document.getElementById("next-button");
-        prevButton.disabled = currentQuestion === 1;
-        if (currentQuestion === totalQuestions) {
-          nextButton.textContent = "Submit";
-          nextButton.disabled = !answers.every(answer => answer === true);
-          // Tambahkan event listener Submit jika tombol dalam mode Submit
-          nextButton.onclick = () => {
-            if (answers.every(answer => answer === true)) {
-              submitQuiz();
-            } else {
-              alert("Jawab semua pertanyaan sebelum submit.");
-            }
-          };
-        } else {
-          nextButton.textContent = "Maju →";
-          nextButton.disabled = false;
-          // Tambahkan event listener untuk navigasi
-          nextButton.onclick = () => navigate("next");
-        }
-      }
-
-      function navigate(direction) {
-        if (direction === "next" && currentQuestion < totalQuestions) {
-          currentQuestion++;
-        } else if (direction === "prev" && currentQuestion > 1) {
-          currentQuestion--;
-        }
-        updateUI();
-      }
-
-      function selectOption(option) {
-        const questionIndex = currentQuestion - 1;
-        const options = option.parentElement.querySelectorAll(".option");
-        if (option.classList.contains("selected")) {
-          option.classList.remove("selected");
-          answers[questionIndex] = false; // Reset answer
-        } else {
-          options.forEach(opt => opt.classList.remove("selected"));
-          option.classList.add("selected");
-          answers[questionIndex] = true; // Mark as answered
-        }
-        updateUI();
-      }
-
-      function validateAnswer() {
-        const questionIndex = currentQuestion - 1;
-        const currentFrame = document.querySelectorAll(".question-frame")[questionIndex];
-        if (currentFrame.querySelector("input[type='checkbox']")) {
-          const checkboxes = currentFrame.querySelectorAll("input[type='checkbox']");
-          answers[questionIndex] = Array.from(checkboxes).some(checkbox => checkbox.checked);
-        } else if (currentFrame.querySelector("input[type='text']")) {
-          const textInput = currentFrame.querySelector("input[type='text']");
-          answers[questionIndex] = textInput.value.trim() !== "";
-        } else if (currentFrame.querySelector("textarea")) {
-          const textarea = currentFrame.querySelector("textarea");
-          answers[questionIndex] = textarea.value.trim() !== "";
-        } else if (currentFrame.querySelector("input[type='range']")) {
-          const slider = currentFrame.querySelector("input[type='range']");
-          answers[questionIndex] = true; // Nilai slider selalu dianggap terjawab
-        } else {
-          answers[questionIndex] = !!currentFrame.querySelector(".option.selected");
-        }
-        updateUI();
-      }
-
-      function toggleCheckbox(container) {
-        const checkbox = container.querySelector("input[type='checkbox']");
-        checkbox.checked = !checkbox.checked;
-        if (checkbox.checked) {
-          container.classList.add("checked");
-        } else {
-          container.classList.remove("checked");
-        }
-        validateAnswer();
-      }
-
-      function updateSliderValue(slider) {
-        const value = slider.value;
-        document.getElementById('slider-value').textContent = `${value}/10`;
-        const questionIndex = currentQuestion - 1;
-        answers[questionIndex] = true; // Semua nilai termasuk 0 dianggap terjawab
-        updateUI();
-      }
-
-      function resetSlider() {
-        const slider = document.getElementById('slider-input');
-        slider.value = "0"; // Reset slider to 0
-        document.getElementById('slider-value').textContent = "0/10";
-        const questionIndex = currentQuestion - 1;
-        answers[questionIndex] = false; // Mark question as unanswered
-        updateUI();
-      }
-
-      function submitQuiz() {
-        const currentUser = localStorage.getItem("currentUser");
-        if (!currentUser) {
-          alert("Tidak ada user yang sedang login!");
-          return;
-        }
-        const users = JSON.parse(localStorage.getItem("users")) || [];
-        const userIndex = users.findIndex(user => user.username === currentUser);
-        if (userIndex === -1) {
-          alert("User tidak ditemukan di database!");
-          return;
-        }
-        users[userIndex].quizData = answers; // Simpan jawaban ke user
-        localStorage.setItem("users", JSON.stringify(users));
-        if (window.confirm("Kuisioner berhasil disimpan! Klik OK untuk kembali ke Home.")) {
-          window.location.href = "index.html";
-        }
-      }
-      // Tambahkan event handler ke tombol Submit
-      document.getElementById("next-button").addEventListener("click", function() {
-        if (currentQuestion === totalQuestions && answers.every(answer => answer !== false)) {
-          submitQuiz();
-        }
-      });
-      window.onload = function() {
-        const currentUser = localStorage.getItem("currentUser");
-        if (!currentUser) {
-          alert("Anda harus login terlebih dahulu!");
-          window.location.href = "login.html"; // Redirect ke halaman login
-        } else {
-          console.log(`Selamat datang, ${currentUser}`);
-        }
-      };
-    </script>
   </head>
   <body>
-    <button class="home-button" onclick="location.href='../Html/index.html'"> ← Home </button>
-    <div id="question-number" class="question-number">Question 1 of 5</div>
-    <div class="question-frame question-container">
-      <h1 class="question-text">Apa reaksi pertama Anda ketika menghadapi situasi yang penuh tekanan</h1>
-      <div>
-        <div class="option" onclick="selectOption(this)">Menjadi emosional (marah atau menangis)</div>
-        <div class="option" onclick="selectOption(this)">Menghindari situasi tersebut</div>
-        <div class="option" onclick="selectOption(this)">Tetap tenang dan mencoba mengatasinya</div>
-      </div>
+    <!-- Tombol Home -->
+    <button class="home-button" onclick="location.href='../Html/index.html'">
+      <i class="fas fa-home"></i>
+    </button>
+
+    <!-- Nomor Pertanyaan -->
+    <div id="question-number" class="question-number">Question 1 of 9</div>
+
+    <!-- Kontainer Pertanyaan -->
+    <div id="question-container" class="question-container">
+      <h1 class="question-text"></h1>
+      <div id="options"></div>
     </div>
-    <div class="question-frame question-container" style="display:none">
-      <h1 class="question-text">Apa saja gejala yang sering Anda alami terkait kecemasan?</h1>
-      <div>
-        <div class="checkbox-container" onclick="toggleCheckbox(this)">
-          <input type="checkbox" id="checkbox1" onchange="validateAnswer()">
-          <label for="checkbox1">Detak jantung cepat</label>
-        </div>
-        <div class="checkbox-container" onclick="toggleCheckbox(this)">
-          <input type="checkbox" id="checkbox2" onchange="validateAnswer()">
-          <label for="checkbox2">Sulit tidur</label>
-        </div>
-        <div class="checkbox-container" onclick="toggleCheckbox(this)">
-          <input type="checkbox" id="checkbox3" onchange="validateAnswer()">
-          <label for="checkbox3">Keringat berlebihan</label>
-        </div>
-      </div>
-    </div>
-    <div class="question-frame question-container" style="display:none">
-      <h1 class="question-text">Apa yang biasanya Anda lakukan untuk mengatasi stres?</h1>
-      <input type="text" class="w-full border-2 border-gray-400 p-2 rounded-md" placeholder="Tulis jawaban di sini" oninput="validateAnswer()">
-    </div>
-    <div class="question-frame question-container" style="display:none">
-      <h1 class="question-text">Ceritakan pengalaman Anda ketika menghadapi situasi yang membuat Anda merasa stres.</h1>
-      <textarea class="w-full border-2 border-gray-400 p-2 rounded-md" rows="4" placeholder="Tulis jawaban di sini" oninput="validateAnswer()"></textarea>
-    </div>
-    <div class="question-frame question-container" style="display:none">
-      <h1 class="question-text">Seberapa puas Anda dengan kualitas tidur Anda dalam sebulan terakhir?</h1>
-      <div style="display: flex; align-items: center; justify-content: center;">
-        <input id="slider-input" type="range" min="0" max="10" value="0" class="w-full" oninput="updateSliderValue(this)">
-        <span id="slider-value" style="margin-left: 10px;">0/10</span>
-      </div>
-      <button class="nav-button" onclick="resetSlider()">Hapus Jawaban</button>
-    </div>
+
+    <!-- Navigasi Tombol -->
     <div class="navigation-buttons">
-      <button id="prev-button" class="nav-button" onclick="navigate('prev')">← Mundur</button>
-      <button id="next-button" class="nav-button" onclick="navigate('next')">Maju →</button>
+      <button id="prev-button" class="nav-button" onclick="navigate('prev')" disabled>
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <button id="next-button" class="nav-button" onclick="navigate('next')">
+        <i class="fas fa-arrow-right"></i>
+      </button>
+      <button id="submit-button" class="submit-button" onclick="submitQuiz()" disabled>
+        Submit
+      </button>
     </div>
+
+    <!-- Progress Bar -->
     <div class="progress-bar-container">
       <div class="progress-bar">
         <div id="progress-bar-inner" class="progress-bar-inner" style="width: 0%;"></div>
       </div>
     </div>
+
+    <!-- JavaScript -->
+    <script>
+      const questions = [
+        "Apakah Anda merasa kehilangan minat untuk melakukan aktivitas sehari-hari yang biasanya menyenangkan?",
+        "Apakah Anda sering merasa sedih, murung, atau tidak bersemangat tanpa alasan yang jelas?",
+        "Apakah Anda mengalami kesulitan tidur, tidur terlalu banyak, atau tidur tidak nyenyak?",
+        "Apakah Anda sering merasa lelah atau kehabisan energi meskipun tidak melakukan aktivitas berat?",
+        "Apakah Anda kehilangan nafsu makan atau justru makan secara berlebihan?",
+        "Apakah Anda merasa tidak percaya diri atau merasa diri Anda gagal?",
+        "Apakah Anda sulit fokus atau berkonsentrasi pada hal-hal seperti membaca, bekerja, atau menonton TV?",
+        "Apakah Anda merasa lebih lamban dalam bergerak atau berbicara, sehingga orang lain memperhatikannya?",
+        "Apakah Anda pernah berpikir hidup Anda tidak berarti atau memiliki keinginan untuk menyakiti diri sendiri?",
+      ];
+      const totalQuestions = questions.length;
+      const answers = Array(totalQuestions).fill(null);
+      let currentQuestion = 0;
+
+      const questionTextEl = document.querySelector(".question-text");
+      const optionsEl = document.getElementById("options");
+      const progressBarInnerEl = document.getElementById("progress-bar-inner");
+      const prevButton = document.getElementById("prev-button");
+      const nextButton = document.getElementById("next-button");
+      const submitButton = document.getElementById("submit-button");
+
+      function renderQuestion() {
+        questionTextEl.textContent = questions[currentQuestion];
+        optionsEl.innerHTML = "";
+
+        ["Tidak pernah", "Kadang-kadang", "Cukup sering", "Setiap hari"].forEach((text, index) => {
+          const option = document.createElement("div");
+          option.className = "option";
+          option.textContent = text;
+          option.onclick = () => toggleOption(index);
+          if (answers[currentQuestion] === index) {
+            option.classList.add("selected");
+          }
+          optionsEl.appendChild(option);
+        });
+
+        document.getElementById("question-number").textContent = `Question ${
+          currentQuestion + 1
+        } of ${totalQuestions}`;
+
+        prevButton.disabled = currentQuestion === 0;
+        if (currentQuestion === totalQuestions - 1) {
+          nextButton.style.display = "none";
+          submitButton.style.display = "inline-block";
+        } else {
+          nextButton.style.display = "inline-block";
+          submitButton.style.display = "none";
+        }
+
+        updateProgress();
+        checkSubmitEligibility();
+      }
+
+      function toggleOption(index) {
+        if (answers[currentQuestion] === index) {
+          answers[currentQuestion] = null;
+        } else {
+          answers[currentQuestion] = index;
+        }
+        renderQuestion();
+      }
+
+      function navigate(direction) {
+        if (direction === "next" && currentQuestion < totalQuestions - 1) {
+          currentQuestion++;
+        } else if (direction === "prev" && currentQuestion > 0) {
+          currentQuestion--;
+        }
+        renderQuestion();
+      }
+
+      function updateProgress() {
+        const answeredCount = answers.filter((answer) => answer !== null).length;
+        progressBarInnerEl.style.width = `${
+          (answeredCount / totalQuestions) * 100
+        }%`;
+      }
+
+      function checkSubmitEligibility() {
+        const allAnswered = answers.every((answer) => answer !== null);
+        submitButton.disabled = !allAnswered;
+        submitButton.classList.toggle("active", allAnswered);
+      }
+
+      function submitQuiz() {
+        if (answers.some((answer) => answer === null)) {
+          alert("Please answer all questions before submitting.");
+          return;
+        }
+        const totalScore = answers.reduce(
+          (sum, score) => sum + (score !== null ? score : 0),
+          0
+        );
+        const result = interpretScore(totalScore);
+        alert(`Your total score: ${totalScore}\n${result}`);
+      }
+
+      function interpretScore(score) {
+        if (score <= 4) return "Tidak ada gejala depresi atau hanya gejala yang sangat ringan.";
+        if (score <= 9) return "Gejala depresi ringan.";
+        if (score <= 14) return "Gejala depresi sedang.";
+        if (score <= 19) return "Gejala depresi cukup berat.";
+        return "Gejala depresi berat.";
+      }
+
+      renderQuestion();
+    </script>
   </body>
 </html>
