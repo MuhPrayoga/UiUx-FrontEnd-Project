@@ -1,371 +1,413 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mind Care - Kuisioner</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-    <style>
-      body {
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mind Care - Kuisioner</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    body {
+      background-color: #d9e1ff;
+      font-family: "Inter", sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100vh;
+      animation: backgroundLoop 30s infinite;
+    }
+
+    .home-button {
+      position: absolute;
+      top: 20px;
+      left: 96px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid #010133;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      color: #010133;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      z-index: 1;
+    }
+
+    .home-button i {
+      font-size: 24px;
+    }
+
+    .home-button:hover {
+      background-color: #f1f1f1;
+    }
+
+    .nav-button {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid #010133;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      color: #010133;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      z-index: 1;
+    }
+
+    .nav-button i {
+      font-size: 24px;
+    }
+
+    .nav-button:hover {
+      background-color: #f1f1f1;
+    }
+
+    .nav-button:disabled {
+      background-color: #f1f1f1;
+      color: #999;
+      border-color: #999;
+      cursor: not-allowed;
+    }
+
+    .submit-button {
+      width: 80px;
+      height: 40px;
+      border-radius: 8px;
+      border: 2px solid #010133;
+      background-color: #f1f1f1;
+      color: #999;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: not-allowed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+      z-index: 1;
+    }
+
+    .submit-button.active {
+      background-color: #fff;
+      color: #010133;
+      cursor: pointer;
+    }
+
+    .submit-button:hover.active {
+      background-color: #f1f1f1;
+    }
+
+    .question-number {
+      font-weight: bold;
+      font-size: 24px;
+      text-align: center;
+      color: #010133;
+      margin-top: 50px;
+      z-index: 1;
+    }
+
+    .question-container {
+      text-align: center;
+      padding: 20px;
+      border-radius: 15px;
+      margin: auto;
+      width: 80%;
+      z-index: 1;
+    }
+
+    .question-text {
+      font-size: 24px;
+      font-weight: bold;
+      color: #010133;
+      margin-bottom: 20px;
+    }
+
+    .option {
+      margin: 10px auto;
+      padding: 10px;
+      width: 80%;
+      border: 2px solid #010133;
+      border-radius: 8px;
+      background-color: transparent;
+      font-size: 18px;
+      color: #010133;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .option:hover,
+    .option.selected {
+      background-color: #010133;
+      color: #fff;
+    }
+
+    .progress-bar-container {
+      background-color: #010133;
+      padding: 30px 0;
+      z-index: 1;
+    }
+
+    .progress-bar {
+      width: 80%;
+      height: 10px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .progress-bar-inner {
+      height: 100%;
+      background-color: #2a94db;
+      transition: width 0.3s ease;
+    }
+
+    .navigation-buttons {
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+      margin: 20px auto;
+    }
+
+    .spotlight {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 1500px;
+      height: 1500px;
+      background: radial-gradient(circle, rgb(220, 242, 255) 0%, rgba(217, 225, 255, 0.1) 50%, rgba(0, 0, 0, 0) 100%);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: transform 0.5s ease-out;
+      z-index: 0;
+    }
+
+    @keyframes backgroundLoop {
+      0% {
         background-color: #d9e1ff;
-        font-family: "Inter", sans-serif;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        min-height: 100vh;
-        animation: backgroundLoop 30s infinite;
       }
 
-      .home-button {
-        position: absolute;
-        top: 20px;
-        left: 96px;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        border: 2px solid #010133;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #fff;
-        color: #010133;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        z-index: 1;
+      25% {
+        background-color: #cde4ff;
       }
 
-      .home-button i {
-        font-size: 24px;
+      50% {
+        background-color: #b8d9ff;
       }
 
-      .home-button:hover {
-        background-color: #f1f1f1;
+      75% {
+        background-color: #cde4ff;
       }
 
-      .nav-button {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        border: 2px solid #010133;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #fff;
-        color: #010133;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        z-index: 1;
+      100% {
+        background-color: #d9e1ff;
       }
+    }
+  </style>
+</head>
 
-      .nav-button i {
-        font-size: 24px;
-      }
+<body>
+  <div class="spotlight" id="spotlight"></div>
 
-      .nav-button:hover {
-        background-color: #f1f1f1;
-      }
+  <!-- Tombol Home -->
+  <button class="home-button" onclick="location.href='../Html/index.html'">
+    <i class="fas fa-home"></i>
+  </button>
 
-      .nav-button:disabled {
-        background-color: #f1f1f1;
-        color: #999;
-        border-color: #999;
-        cursor: not-allowed;
-      }
+  <!-- Membuka pop up -->
+  <button id="open-popup" class="pop-up-button absolute top-3 right-4 text-white p-3 rounded-xl hover:bg-blue-900">
+    Petunjuk Pengisian Kuisioner
+  </button>
 
-      .submit-button {
-        width: 80px;
-        height: 40px;
-        border-radius: 8px;
-        border: 2px solid #010133;
-        background-color: #f1f1f1;
-        color: #999;
-        font-weight: bold;
-        font-size: 16px;
-        cursor: not-allowed;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background-color 0.3s ease;
-        z-index: 1;
-      }
+  <!-- Nomor Pertanyaan -->
+  <div id="question-number" class="question-number">Question 1 of 9</div>
 
-      .submit-button.active {
-        background-color: #fff;
-        color: #010133;
-        cursor: pointer;
-      }
+  <!-- Kontainer Pertanyaan -->
+  <div id="question-container" class="question-container">
+    <h1 class="question-text"></h1>
+    <div id="options"></div>
+  </div>
 
-      .submit-button:hover.active {
-        background-color: #f1f1f1;
-      }
-
-      .question-number {
-        font-weight: bold;
-        font-size: 24px;
-        text-align: center;
-        color: #010133;
-        margin-top: 50px;
-        z-index: 1;
-      }
-
-      .question-container {
-        text-align: center;
-        padding: 20px;
-        border-radius: 15px;
-        margin: auto;
-        width: 80%;
-        z-index: 1;
-      }
-
-      .question-text {
-        font-size: 24px;
-        font-weight: bold;
-        color: #010133;
-        margin-bottom: 20px;
-      }
-
-      .option {
-        margin: 10px auto;
-        padding: 10px;
-        width: 80%;
-        border: 2px solid #010133;
-        border-radius: 8px;
-        background-color: transparent;
-        font-size: 18px;
-        color: #010133;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .option:hover,
-      .option.selected {
-        background-color: #010133;
-        color: #fff;
-      }
-
-      .progress-bar-container {
-        background-color: #010133;
-        padding: 30px 0;
-        z-index: 1;
-      }
-
-      .progress-bar {
-        width: 80%;
-        height: 10px;
-        margin: 0 auto;
-        background-color: #fff;
-        border-radius: 5px;
-        overflow: hidden;
-      }
-
-      .progress-bar-inner {
-        height: 100%;
-        background-color: #2a94db;
-        transition: width 0.3s ease;
-      }
-
-      .navigation-buttons {
-        display: flex;
-        justify-content: space-between;
-        width: 80%;
-        margin: 20px auto;
-      }
-      .spotlight {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 1500px;
-        height: 1500px;
-        background: radial-gradient(circle, rgb(220, 242, 255) 0%, rgba(217, 225, 255, 0.1) 50%, rgba(0, 0, 0, 0) 100%);
-        pointer-events: none;
-        transform: translate(-50%, -50%);
-       transition: transform 0.5s ease-out;
-        z-index: 0;
-      }
-
-      @keyframes backgroundLoop {
-        0% {
-          background-color: #d9e1ff;
-        }
-        25% {
-          background-color: #cde4ff;
-        }
-        50% {
-          background-color: #b8d9ff;
-        }
-        75% {
-          background-color: #cde4ff;
-        }
-        100% {
-          background-color: #d9e1ff;
-        }
-      }
-
-
-    </style>
-  </head>
-  <body>
-
-    <div class="spotlight" id="spotlight"></div>
-
-    <!-- Tombol Home -->
-    <button class="home-button" onclick="location.href='../Html/index.html'">
-      <i class="fas fa-home"></i>
+  <!-- Navigasi Tombol -->
+  <div class="navigation-buttons">
+    <button id="prev-button" class="nav-button" onclick="navigate('prev')" disabled>
+      <i class="fas fa-arrow-left"></i>
     </button>
+    <button id="next-button" class="nav-button" onclick="navigate('next')">
+      <i class="fas fa-arrow-right"></i>
+    </button>
+    <button id="submit-button" class="submit-button" onclick="submitQuiz()" disabled>
+      Submit
+    </button>
+  </div>
 
-    <!-- Nomor Pertanyaan -->
-    <div id="question-number" class="question-number">Question 1 of 9</div>
-
-    <!-- Kontainer Pertanyaan -->
-    <div id="question-container" class="question-container">
-      <h1 class="question-text"></h1>
-      <div id="options"></div>
+  <!-- Progress Bar -->
+  <div class="progress-bar-container">
+    <div class="progress-bar">
+      <div id="progress-bar-inner" class="progress-bar-inner" style="width: 0%;"></div>
     </div>
+  </div>
 
-    <!-- Navigasi Tombol -->
-    <div class="navigation-buttons">
-      <button id="prev-button" class="nav-button" onclick="navigate('prev')" disabled>
-        <i class="fas fa-arrow-left"></i>
-      </button>
-      <button id="next-button" class="nav-button" onclick="navigate('next')">
-        <i class="fas fa-arrow-right"></i>
-      </button>
-      <button id="submit-button" class="submit-button" onclick="submitQuiz()" disabled>
-        Submit
-      </button>
+  <!-- Overlay -->
+  <div id="overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+
+  <!-- Pop-Up -->
+  <div id="popup"
+    class="hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-100 text-gray-800 p-6 rounded-lg shadow-lg z-50 w-96">
+    <h2 class="text-lg font-bold mb-4 text-gray-800">Petunjuk Pengisian Kuisioner</h2>
+    <div class="grid grid-cols-1 gap-4 mb-4">
+      <!-- Angka Pertanyaan -->
+      <h3>1. Lorem ipsum dolor sit amet</h3>
+      <h3>2. Lorem ipsum dolor sit amet</h3>
+      <h3>3. Lorem ipsum dolor sit amet</h3>
+      <h3>4. Lorem ipsum dolor sit amet</h3>
     </div>
+    <button id="close-popup" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
+      Tutup
+    </button>
+  </div>
 
-    <!-- Progress Bar -->
-    <div class="progress-bar-container">
-      <div class="progress-bar">
-        <div id="progress-bar-inner" class="progress-bar-inner" style="width: 0%;"></div>
-      </div>
-    </div>
+  <!-- JavaScript -->
+  <script>
+    const spotlight = document.getElementById("spotlight");
 
-    <!-- JavaScript -->
-    <script>
+    document.addEventListener("mousemove", (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
       const spotlight = document.getElementById("spotlight");
 
-      document.addEventListener("mousemove", (e) => {
-        const x = e.clientX;
-        const y = e.clientY;
-        const spotlight = document.getElementById("spotlight");
+      spotlight.style.transform = `translate(${x - spotlight.offsetWidth / 2}px, ${y - spotlight.offsetHeight / 2}px)`;
+    });
 
-        spotlight.style.transform = `translate(${x - spotlight.offsetWidth / 2}px, ${y - spotlight.offsetHeight / 2}px)`;
+
+    const questions = [
+      "Apakah Anda merasa kehilangan minat untuk melakukan aktivitas sehari-hari yang biasanya menyenangkan?",
+      "Apakah Anda sering merasa sedih, murung, atau tidak bersemangat tanpa alasan yang jelas?",
+      "Apakah Anda mengalami kesulitan tidur, tidur terlalu banyak, atau tidur tidak nyenyak?",
+      "Apakah Anda sering merasa lelah atau kehabisan energi meskipun tidak melakukan aktivitas berat?",
+      "Apakah Anda kehilangan nafsu makan atau justru makan secara berlebihan?",
+      "Apakah Anda merasa tidak percaya diri atau merasa diri Anda gagal?",
+      "Apakah Anda sulit fokus atau berkonsentrasi pada hal-hal seperti membaca, bekerja, atau menonton TV?",
+      "Apakah Anda merasa lebih lamban dalam bergerak atau berbicara, sehingga orang lain memperhatikannya?",
+      "Apakah Anda pernah berpikir hidup Anda tidak berarti atau memiliki keinginan untuk menyakiti diri sendiri?",
+    ];
+    const totalQuestions = questions.length;
+    const answers = Array(totalQuestions).fill(null);
+    let currentQuestion = 0;
+
+    const questionTextEl = document.querySelector(".question-text");
+    const optionsEl = document.getElementById("options");
+    const progressBarInnerEl = document.getElementById("progress-bar-inner");
+    const prevButton = document.getElementById("prev-button");
+    const nextButton = document.getElementById("next-button");
+    const submitButton = document.getElementById("submit-button");
+
+    function renderQuestion() {
+      questionTextEl.textContent = questions[currentQuestion];
+      optionsEl.innerHTML = "";
+
+      ["Tidak pernah", "Kadang-kadang", "Cukup sering", "Setiap hari"].forEach((text, index) => {
+        const option = document.createElement("div");
+        option.className = "option";
+        option.textContent = text;
+        option.onclick = () => toggleOption(index);
+        if (answers[currentQuestion] === index) {
+          option.classList.add("selected");
+        }
+        optionsEl.appendChild(option);
       });
 
-
-      const questions = [
-        "Apakah Anda merasa kehilangan minat untuk melakukan aktivitas sehari-hari yang biasanya menyenangkan?",
-        "Apakah Anda sering merasa sedih, murung, atau tidak bersemangat tanpa alasan yang jelas?",
-        "Apakah Anda mengalami kesulitan tidur, tidur terlalu banyak, atau tidur tidak nyenyak?",
-        "Apakah Anda sering merasa lelah atau kehabisan energi meskipun tidak melakukan aktivitas berat?",
-        "Apakah Anda kehilangan nafsu makan atau justru makan secara berlebihan?",
-        "Apakah Anda merasa tidak percaya diri atau merasa diri Anda gagal?",
-        "Apakah Anda sulit fokus atau berkonsentrasi pada hal-hal seperti membaca, bekerja, atau menonton TV?",
-        "Apakah Anda merasa lebih lamban dalam bergerak atau berbicara, sehingga orang lain memperhatikannya?",
-        "Apakah Anda pernah berpikir hidup Anda tidak berarti atau memiliki keinginan untuk menyakiti diri sendiri?",
-      ];
-      const totalQuestions = questions.length;
-      const answers = Array(totalQuestions).fill(null);
-      let currentQuestion = 0;
-
-      const questionTextEl = document.querySelector(".question-text");
-      const optionsEl = document.getElementById("options");
-      const progressBarInnerEl = document.getElementById("progress-bar-inner");
-      const prevButton = document.getElementById("prev-button");
-      const nextButton = document.getElementById("next-button");
-      const submitButton = document.getElementById("submit-button");
-
-      function renderQuestion() {
-        questionTextEl.textContent = questions[currentQuestion];
-        optionsEl.innerHTML = "";
-
-        ["Tidak pernah", "Kadang-kadang", "Cukup sering", "Setiap hari"].forEach((text, index) => {
-          const option = document.createElement("div");
-          option.className = "option";
-          option.textContent = text;
-          option.onclick = () => toggleOption(index);
-          if (answers[currentQuestion] === index) {
-            option.classList.add("selected");
-          }
-          optionsEl.appendChild(option);
-        });
-
-        document.getElementById("question-number").textContent = `Question ${
-          currentQuestion + 1
+      document.getElementById("question-number").textContent = `Question ${currentQuestion + 1
         } of ${totalQuestions}`;
 
-        prevButton.disabled = currentQuestion === 0;
-        if (currentQuestion === totalQuestions - 1) {
-          nextButton.style.display = "none";
-          submitButton.style.display = "inline-block";
-        } else {
-          nextButton.style.display = "inline-block";
-          submitButton.style.display = "none";
-        }
-
-        updateProgress();
-        checkSubmitEligibility();
+      prevButton.disabled = currentQuestion === 0;
+      if (currentQuestion === totalQuestions - 1) {
+        nextButton.style.display = "none";
+        submitButton.style.display = "inline-block";
+      } else {
+        nextButton.style.display = "inline-block";
+        submitButton.style.display = "none";
       }
 
-      function toggleOption(index) {
-        if (answers[currentQuestion] === index) {
-          answers[currentQuestion] = null;
-        } else {
-          answers[currentQuestion] = index;
-        }
-        renderQuestion();
-      }
+      updateProgress();
+      checkSubmitEligibility();
+    }
 
-      function navigate(direction) {
-        if (direction === "next" && currentQuestion < totalQuestions - 1) {
-          currentQuestion++;
-        } else if (direction === "prev" && currentQuestion > 0) {
-          currentQuestion--;
-        }
-        renderQuestion();
+    function toggleOption(index) {
+      if (answers[currentQuestion] === index) {
+        answers[currentQuestion] = null;
+      } else {
+        answers[currentQuestion] = index;
       }
-
-      function updateProgress() {
-        const answeredCount = answers.filter((answer) => answer !== null).length;
-        progressBarInnerEl.style.width = `${
-          (answeredCount / totalQuestions) * 100
-        }%`;
-      }
-
-      function checkSubmitEligibility() {
-        const allAnswered = answers.every((answer) => answer !== null);
-        submitButton.disabled = !allAnswered;
-        submitButton.classList.toggle("active", allAnswered);
-      }
-
-      function submitQuiz() {
-        if (answers.some((answer) => answer === null)) {
-          alert("Please answer all questions before submitting.");
-          return;
-        }
-        const totalScore = answers.reduce(
-          (sum, score) => sum + (score !== null ? score : 0),
-          0
-        );
-        const result = interpretScore(totalScore);
-        alert(`Your total score: ${totalScore}\n${result}`);
-      }
-
-      function interpretScore(score) {
-        if (score <= 4) return "Tidak ada gejala depresi atau hanya gejala yang sangat ringan.";
-        if (score <= 9) return "Gejala depresi ringan.";
-        if (score <= 14) return "Gejala depresi sedang.";
-        if (score <= 19) return "Gejala depresi cukup berat.";
-        return "Gejala depresi berat.";
-      }
-
       renderQuestion();
-    </script>
-  </body>
+    }
+
+    function navigate(direction) {
+      if (direction === "next" && currentQuestion < totalQuestions - 1) {
+        currentQuestion++;
+      } else if (direction === "prev" && currentQuestion > 0) {
+        currentQuestion--;
+      }
+      renderQuestion();
+    }
+
+    function updateProgress() {
+      const answeredCount = answers.filter((answer) => answer !== null).length;
+      progressBarInnerEl.style.width = `${(answeredCount / totalQuestions) * 100
+        }%`;
+    }
+
+    function checkSubmitEligibility() {
+      const allAnswered = answers.every((answer) => answer !== null);
+      submitButton.disabled = !allAnswered;
+      submitButton.classList.toggle("active", allAnswered);
+    }
+
+    function submitQuiz() {
+      if (answers.some((answer) => answer === null)) {
+        alert("Please answer all questions before submitting.");
+        return;
+      }
+      const totalScore = answers.reduce(
+        (sum, score) => sum + (score !== null ? score : 0),
+        0
+      );
+      const result = interpretScore(totalScore);
+      alert(`Your total score: ${totalScore}\n${result}`);
+    }
+
+    function interpretScore(score) {
+      if (score <= 4) return "Tidak ada gejala depresi atau hanya gejala yang sangat ringan.";
+      if (score <= 9) return "Gejala depresi ringan.";
+      if (score <= 14) return "Gejala depresi sedang.";
+      if (score <= 19) return "Gejala depresi cukup berat.";
+      return "Gejala depresi berat.";
+    }
+
+    renderQuestion();
+
+    // Referensi elemen
+    const popup = document.getElementById("popup");
+    const overlay = document.getElementById("overlay");
+    const openPopupBtn = document.getElementById("open-popup");
+    const closePopupBtn = document.getElementById("close-popup");
+
+    // Fungsi membuka pop-up
+    openPopupBtn.addEventListener("click", () => {
+      popup.classList.remove("hidden");
+      overlay.classList.remove("hidden");
+    });
+
+    // Fungsi menutup pop-up
+    closePopupBtn.addEventListener("click", () => {
+      popup.classList.add("hidden");
+      overlay.classList.add("hidden");
+    });
+  </script>
+</body>
+
 </html>
