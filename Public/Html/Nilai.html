@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mind Care - Hasil Penilaian</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* General Styles */
+    body {
+      background-color: #d9e1ff;
+      font-family: "Inter", sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      animation: backgroundLoop 30s infinite;
+      position: relative;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: flex;
+      position: fixed;
+      z-index: 50;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: none;
+      width: 90%;
+      max-width: 600px;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      position: relative;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .close {
+      color: #aaa;
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+    }
+
+    .result-title {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #010133;
+    }
+
+    .result-score {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #2a94db;
+    }
+
+    .result-message {
+      font-size: 20px;
+      color: #333;
+    }
+
+    /* Circular Progress Bar Styles */
+    .circular-progress {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      margin: 20px auto;
+    }
+
+    .circular-progress svg {
+      transform: rotate(-90deg);
+      width: 100%;
+      height: 100%;
+    }
+
+    .circular-progress circle {
+      fill: none;
+      stroke-width: 10;
+    }
+
+    .circular-progress .bg {
+      stroke: #eee;
+    }
+
+    .circular-progress .progress {
+      stroke: #2a94db;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 1s ease-out, stroke 0.3s ease-out;
+    }
+
+    .circular-progress .percentage {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      font-weight: bold;
+      color: #010133;
+    }
+
+    /* Dynamic Colors Based on Score */
+    .score-green {
+      color: #28a745;
+    }
+
+    .score-yellow {
+      color: #ffc107;
+    }
+
+    .score-orange {
+      color: #fd7e14;
+    }
+
+    .score-red {
+      color: #dc3545;
+    }
+
+    /* Tombol Kembali ke Beranda */
+    .go-home-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #2a94db;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .go-home-button:hover {
+      background-color: #2171a5;
+    }
+
+    /* Background Animation */
+    @keyframes backgroundLoop {
+      0% {
+        background-color: #d9e1ff;
+      }
+
+      25% {
+        background-color: #cde4ff;
+      }
+
+      50% {
+        background-color: #b8d9ff;
+      }
+
+      75% {
+        background-color: #cde4ff;
+      }
+
+      100% {
+        background-color: #d9e1ff;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Result Modal -->
+  <div id="result-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div class="result-title">Hasil Penilaian</div>
+      <div class="circular-progress">
+        <svg>
+          <circle class="bg" cx="75" cy="75" r="70"></circle>
+          <circle class="progress" cx="75" cy="75" r="70" stroke-dasharray="440" stroke-dashoffset="440"></circle>
+        </svg>
+        <div id="percentage" class="percentage">0%</div>
+      </div>
+      <div id="result-score" class="result-score"></div>
+      <div id="result-message" class="result-message"></div>
+      <!-- Tombol Kembali ke Beranda -->
+      <button class="go-home-button" onclick="goHome()">Kembali ke Beranda</button>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Function to parse query parameters
+    function getQueryParams() {
+      const params = {};
+      window.location.search.substring(1).split("&").forEach(pair => {
+        const [key, value] = pair.split("=");
+        if (key) {
+          params[decodeURIComponent(key)] = decodeURIComponent(value || "");
+        }
+      });
+      return params;
+    }
+
+    // Function to interpret score and add reinforcing words
+    function interpretScore(score) {
+      let message = "";
+      let level = "";
+
+      if (score <= 4) {
+        message = "Tidak ada gejala depresi atau hanya gejala yang sangat ringan.";
+        level = "green";
+        message += " Terus pertahankan kesehatan mental Anda!";
+      } else if (score <= 9) {
+        message = "Gejala depresi ringan.";
+        level = "yellow";
+        message += " Jaga diri Anda dan jangan ragu untuk mencari bantuan jika diperlukan.";
+      } else if (score <= 14) {
+        message = "Gejala depresi sedang.";
+        level = "orange";
+        message += " Pertimbangkan untuk berkonsultasi dengan profesional kesehatan mental.";
+      } else if (score <= 19) {
+        message = "Gejala depresi cukup berat.";
+        level = "red";
+        message += " Segera hubungi profesional kesehatan mental untuk mendapatkan bantuan.";
+      } else {
+        message = "Gejala depresi berat.";
+        level = "red";
+        message += " Segera hubungi profesional kesehatan mental untuk mendapatkan bantuan.";
+      }
+
+      return { message, level };
+    }
+
+    // Function to display result
+    function displayResult(score, result) {
+      const resultScoreEl = document.getElementById("result-score");
+      const resultMessageEl = document.getElementById("result-message");
+      const percentageEl = document.getElementById("percentage");
+      const progressCircle = document.querySelector(".circular-progress .progress");
+
+      resultScoreEl.textContent = `Total Skor Anda: ${score}`;
+      resultMessageEl.textContent = result.message;
+
+      // Calculate percentage
+      const maxScore = 9 * 3; // Assuming maximum score is 27 (9 questions * 3)
+      const percentage = (score / maxScore) * 100;
+      percentageEl.textContent = `${Math.round(percentage)}%`;
+
+      // Update circular progress
+      const offset = 440 - (440 * percentage) / 100;
+      progressCircle.style.strokeDashoffset = offset;
+
+      // Update stroke color based on level
+      switch (result.level) {
+        case "green":
+          progressCircle.style.stroke = "#28a745";
+          break;
+        case "yellow":
+          progressCircle.style.stroke = "#ffc107";
+          break;
+        case "orange":
+          progressCircle.style.stroke = "#fd7e14";
+          break;
+        case "red":
+          progressCircle.style.stroke = "#dc3545";
+          break;
+        default:
+          progressCircle.style.stroke = "#2a94db";
+      }
+
+      // Update text color based on level
+      percentageEl.className = `percentage score-${result.level}`;
+      resultScoreEl.className = `result-score score-${result.level}`;
+
+      // Show modal
+      const resultModal = document.getElementById("result-modal");
+      resultModal.style.display = "flex";
+    }
+
+    // Function to close modal and redirect to home
+    function closeModal() {
+      const resultModal = document.getElementById("result-modal");
+      resultModal.style.display = "none";
+      // Redirect to home after closing modal
+      window.location.href = "/Public/Html/index.html";
+    }
+
+    // Function to redirect to home
+    function goHome() {
+      window.location.href = "/Public/Html/index.html";
+    }
+
+    // On page load
+    window.onload = function () {
+      const params = getQueryParams();
+      if (params.score) {
+        const score = parseInt(params.score, 10);
+        if (!isNaN(score)) {
+          const result = interpretScore(score);
+          displayResult(score, result);
+        } else {
+          alert("Skor tidak valid.");
+          // Redirect to home if score is invalid
+          window.location.href = "/Public/Html/index.html";
+        }
+      } else {
+        alert("Skor tidak ditemukan.");
+        // Redirect to home if score is missing
+        window.location.href = "/Public/Html/index.html";
+      }
+    };
+
+    // Close modal when clicking outside the modal content and redirect to home
+    window.onclick = function (event) {
+      const resultModal = document.getElementById("result-modal");
+      if (event.target == resultModal) {
+        resultModal.style.display = "none";
+        // Redirect to home after closing modal
+        window.location.href = "/Public/Html/index.html";
+      }
+    };
+  </script>
+</body>
+
+</html>
