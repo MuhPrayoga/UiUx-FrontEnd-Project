@@ -8,6 +8,85 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
+    * {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-image: url('/Assets/1.png');
+      background-size: cover;
+      /* Membuat gambar menutupi seluruh layar */
+      background-repeat: no-repeat;
+      /* Tidak mengulang gambar */
+      background-attachment: fixed;
+      /* Gambar tetap (tidak ikut scroll) */
+      background-position: center;
+      /* Memposisikan gambar di tengah */
+    }
+
+    /* Custom styles for the hamburger menu */
+    .menu {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .menu {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-links.active {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        /* Adjust as needed */
+        width: 100%;
+        z-index: 10;
+      }
+
+      .text-5xl {
+        font-size: 2.5rem;
+      }
+
+      .text-2xl {
+        font-size: 1.5rem;
+      }
+
+      .menu-item {
+        flex: 1;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    .bg-lightGreen {
+      background-color: #7CF5FF;
+    }
+
+    .bg-darkBlue {
+      background-color: #1230AE;
+    }
+
+    .bg-whiteCream {
+      background-color: #FFF7F7;
+    }
+
+    .bg-lightBlue {
+      background-color: #ADBDF7;
+    }
+
+    .text-darkBlue {
+      color: #1230AE;
+    }
+
+    .text-whiteCream {
+      color: #FFF7F7;
+    }
+
     body {
       background-color: #d9e1ff;
       font-family: "Inter", sans-serif;
@@ -158,6 +237,7 @@
       background-color: #fff;
       border-radius: 5px;
       overflow: hidden;
+      position: relative;
     }
 
     .progress-bar-inner {
@@ -246,11 +326,15 @@
   </div>
 
   <!-- Progress Bar -->
-  <div class="progress-bar-container">
-    <div class="progress-bar">
-      <div id="progress-bar-inner" class="progress-bar-inner" style="width: 0%;"></div>
+  <div class="bg-indigo-900 py-4">
+    <div class="relative w-4/5 mx-auto h-2 bg-white rounded overflow-hidden">
+      <div id="progress-bar-inner" class="h-full bg-blue-500 transition-all duration-300" style="width: 0%;"></div>
+      <div id="progress-percentage" class="absolute inset-0 flex items-center justify-center text-black font-bold">
+        0%
+      </div>
     </div>
   </div>
+
 
   <!-- Overlay -->
   <div id="overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"></div>
@@ -357,9 +441,17 @@
 
     function updateProgress() {
       const answeredCount = answers.filter((answer) => answer !== null).length;
-      progressBarInnerEl.style.width = `${(answeredCount / totalQuestions) * 100
-        }%`;
+      const progressPercentage = (answeredCount / totalQuestions) * 100;
+
+      // Update lebar progress bar
+      const progressBarInnerEl = document.getElementById("progress-bar-inner");
+      progressBarInnerEl.style.width = `${progressPercentage}%`;
+
+      // Update teks persentase
+      const progressPercentageEl = document.getElementById("progress-percentage");
+      progressPercentageEl.textContent = `${Math.round(progressPercentage)}%`;
     }
+
 
     function checkSubmitEligibility() {
       const allAnswered = answers.every((answer) => answer !== null);
