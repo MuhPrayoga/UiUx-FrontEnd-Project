@@ -87,6 +87,10 @@
       color: #FFF7F7;
     }
 
+    .border-darkBlue {
+      border-color: #1230AE;
+    }
+
     body {
       background-color: #d9e1ff;
       font-family: "Inter", sans-serif;
@@ -326,14 +330,15 @@
   </div>
 
   <!-- Progress Bar -->
-  <div class="bg-indigo-900 py-4">
-    <div class="relative w-4/5 mx-auto h-2 bg-white rounded overflow-hidden">
-      <div id="progress-bar-inner" class="h-full bg-blue-500 transition-all duration-300" style="width: 0%;"></div>
+  <div class="py-6 ">
+    <div class="relative w-4/5 mx-auto h-6 bg-white rounded overflow-hidden rounded-3xl border-2 border-darkBlue">
+      <div id="progress-bar-inner" class="h-full bg-darkBlue transition-all duration-300" style="width: 0%;"></div>
       <div id="progress-percentage" class="absolute inset-0 flex items-center justify-center text-black font-bold">
         0%
       </div>
     </div>
   </div>
+
 
 
   <!-- Overlay -->
