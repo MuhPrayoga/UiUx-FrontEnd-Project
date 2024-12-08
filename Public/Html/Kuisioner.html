@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
@@ -22,14 +22,6 @@
       /* Gambar tetap (tidak ikut scroll) */
       background-position: center;
       /* Memposisikan gambar di tengah */
-      background-color: #d9e1ff;
-      font-family: "Inter", sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 100vh;
-      animation: backgroundLoop 30s infinite;
-      position: relative;
     }
 
     /* Custom styles for the hamburger menu */
@@ -99,6 +91,16 @@
       border-color: #1230AE;
     }
 
+    body {
+      background-color: #d9e1ff;
+      font-family: "Inter", sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100vh;
+      animation: backgroundLoop 30s infinite;
+    }
+
     .home-button {
       position: absolute;
       top: 20px;
@@ -155,6 +157,16 @@
       cursor: not-allowed;
     }
 
+    /* Tombol aktif */
+    button:focus {
+      outline: none;
+    }
+
+    button[disabled] {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
     .submit-button {
       width: 80px;
       height: 40px;
@@ -180,6 +192,13 @@
 
     .submit-button:hover.active {
       background-color: #f1f1f1;
+    }
+
+    .submit-button:disabled {
+      background-color: #f1f1f1;
+      color: #999;
+      border-color: #ccc;
+      cursor: not-allowed;
     }
 
     .question-number {
@@ -265,7 +284,7 @@
       pointer-events: none;
       transform: translate(-50%, -50%);
       transition: transform 0.5s ease-out;
-      z-index: 0;
+      z-index: -1;
     }
 
     @keyframes backgroundLoop {
@@ -296,7 +315,7 @@
   <div class="spotlight" id="spotlight"></div>
 
   <!-- Tombol Home -->
-  <button class="home-button" onclick="location.href='index.html'">
+  <button class="home-button" onclick="location.href='../Html/index.html'">
     <i class="fas fa-home"></i>
   </button>
 
@@ -306,27 +325,38 @@
     <img src="/Assets/9.png" alt="Img9" class="w-6 h-6">
   </button>
 
-  <!-- Nomor Pertanyaan -->
-  <div id="question-number" class="question-number">Question 1 of 9</div>
-
   <!-- Kontainer Pertanyaan -->
   <div id="question-container" class="question-container">
     <h1 class="question-text"></h1>
     <div id="options"></div>
   </div>
 
-  <!-- Navigasi Tombol -->
-  <div class="navigation-buttons">
-    <button id="prev-button" class="nav-button" onclick="navigate('prev')" disabled>
+  <div class="flex justify-center mt-6 space-x-2">
+    <!-- Tombol Prev -->
+    <button id="prev-button"
+      class="w-10 h-10 flex items-center justify-center rounded-full border-2 border-[#1230ae] text-[#1230ae] bg-white hover:bg-[#1230ae] hover:text-white"
+      onclick="navigate('prev')" disabled>
       <i class="fas fa-arrow-left"></i>
     </button>
-    <button id="next-button" class="nav-button" onclick="navigate('next')">
+
+    <!-- Navigasi Nomor -->
+    <div id="number-navigation" class="flex space-x-2"></div>
+
+    <!-- Tombol Next -->
+    <button id="next-button"
+      class="w-10 h-10 flex items-center justify-center rounded-full border-2 border-[#1230ae] text-[#1230ae] bg-white hover:bg-[#1230ae] hover:text-white"
+      onclick="navigate('next')">
       <i class="fas fa-arrow-right"></i>
     </button>
-    <button id="submit-button" class="submit-button" onclick="submitQuiz()" disabled>
+
+    <!-- Tombol Submit -->
+    <button id="submit-button"
+      class="submit-button hidden w-32 h-10 flex items-center justify-center rounded-full border-2 border-[#1230ae] text-[#1230ae] bg-white hover:bg-[#1230ae] hover:text-white"
+      onclick="submitQuiz()">
       Submit
     </button>
   </div>
+
 
   <!-- Progress Bar -->
   <div class="py-6 ">
@@ -338,6 +368,8 @@
     </div>
   </div>
 
+
+
   <!-- Overlay -->
   <div id="overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"></div>
 
@@ -347,10 +379,12 @@
     <h2 class="text-lg font-bold mb-4 text-gray-800">Petunjuk Pengisian Kuisioner</h2>
     <div class="grid grid-cols-1 gap-4 mb-4">
       <!-- Angka Pertanyaan -->
-      <h3>1. Lorem ipsum dolor sit amet</h3>
-      <h3>2. Lorem ipsum dolor sit amet</h3>
-      <h3>3. Lorem ipsum dolor sit amet</h3>
-      <h3>4. Lorem ipsum dolor sit amet</h3>
+      <h3>1. Kuisioner berupa 9 pertanyaan pilihan ganda</h3>
+      <h3>2. Pertanyaan dapat dilewati tanpa menjawab</h3>
+      <h3>3. Pengguna dapat kembali ke pertanyaan sebelumnya jika ada pertanyaan
+        yang belum ataupun sudah dijawab</h3>
+      <h3>4. Untuk melihat hasil, pengguna harus mengisi semua pertanyaan dan
+        menekan tombol submit</h3>
     </div>
     <button id="close-popup" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
       Tutup
@@ -359,16 +393,17 @@
 
   <!-- JavaScript -->
   <script>
-    // Spotlight Effect
     const spotlight = document.getElementById("spotlight");
 
     document.addEventListener("mousemove", (e) => {
       const x = e.clientX;
       const y = e.clientY;
+      const spotlight = document.getElementById("spotlight");
+
       spotlight.style.transform = `translate(${x - spotlight.offsetWidth / 2}px, ${y - spotlight.offsetHeight / 2}px)`;
     });
 
-    // Questionnaire Data
+
     const questions = [
       "Apakah Anda merasa kehilangan minat untuk melakukan aktivitas sehari-hari yang biasanya menyenangkan?",
       "Apakah Anda sering merasa sedih, murung, atau tidak bersemangat tanpa alasan yang jelas?",
@@ -384,34 +419,32 @@
     const answers = Array(totalQuestions).fill(null);
     let currentQuestion = 0;
 
-    // DOM Elements
     const questionTextEl = document.querySelector(".question-text");
     const optionsEl = document.getElementById("options");
     const progressBarInnerEl = document.getElementById("progress-bar-inner");
-    const progressPercentageEl = document.getElementById("progress-percentage");
     const prevButton = document.getElementById("prev-button");
     const nextButton = document.getElementById("next-button");
     const submitButton = document.getElementById("submit-button");
 
-    // Render Current Question
     function renderQuestion() {
       questionTextEl.textContent = questions[currentQuestion];
       optionsEl.innerHTML = "";
 
-      ["Tidak pernah", "Kadang-kadang", "Cukup sering", "Setiap hari"].forEach((text, index) => {
-        const option = document.createElement("div");
-        option.className = "option";
-        option.textContent = text;
-        option.onclick = () => toggleOption(index);
-        if (answers[currentQuestion] === index) {
-          option.classList.add("selected");
+      ["Tidak pernah", "Kadang-kadang", "Cukup sering", "Setiap hari"].forEach(
+        (text, index) => {
+          const option = document.createElement("div");
+          option.className = `option w-full py-2 px-4 text-center border-2 border-[#1230ae] rounded-md cursor-pointer transition-all ${answers[currentQuestion] === index
+              ? "bg-[#1230ae] text-white"
+              : "bg-white text-[#1230ae]"
+            } hover:bg-[#1230ae] hover:text-white`;
+          option.textContent = text;
+          option.onclick = () => toggleOption(index);
+          optionsEl.appendChild(option);
         }
-        optionsEl.appendChild(option);
-      });
-
-      document.getElementById("question-number").textContent = `Question ${currentQuestion + 1} of ${totalQuestions}`;
+      );
 
       prevButton.disabled = currentQuestion === 0;
+
       if (currentQuestion === totalQuestions - 1) {
         nextButton.style.display = "none";
         submitButton.style.display = "inline-block";
@@ -421,20 +454,20 @@
       }
 
       updateProgress();
-      checkSubmitEligibility();
+      renderNumberNavigation();
+      checkSubmitEligibility(); // Pastikan selalu dipanggil
     }
 
-    // Toggle Option Selection
+
     function toggleOption(index) {
       if (answers[currentQuestion] === index) {
-        answers[currentQuestion] = null;
-      } else {
-        answers[currentQuestion] = index;
+        return; // Abaikan jika opsi yang sama dipilih
       }
-      renderQuestion();
+      answers[currentQuestion] = index; // Set jawaban
+      renderQuestion(); // Render ulang untuk memperbarui tombol Submit dan navigasi
     }
 
-    // Navigate Between Questions
+
     function navigate(direction) {
       if (direction === "next" && currentQuestion < totalQuestions - 1) {
         currentQuestion++;
@@ -444,26 +477,34 @@
       renderQuestion();
     }
 
-    // Update Progress Bar
     function updateProgress() {
       const answeredCount = answers.filter((answer) => answer !== null).length;
       const progressPercentage = (answeredCount / totalQuestions) * 100;
 
       // Update lebar progress bar
+      const progressBarInnerEl = document.getElementById("progress-bar-inner");
       progressBarInnerEl.style.width = `${progressPercentage}%`;
 
       // Update teks persentase
+      const progressPercentageEl = document.getElementById("progress-percentage");
       progressPercentageEl.textContent = `${Math.round(progressPercentage)}%`;
     }
 
-    // Check if Submit Button Should be Enabled
+
     function checkSubmitEligibility() {
       const allAnswered = answers.every((answer) => answer !== null);
-      submitButton.disabled = !allAnswered;
-      submitButton.classList.toggle("active", allAnswered);
+      if (allAnswered) {
+        submitButton.disabled = false;
+        submitButton.classList.add("active");
+        submitButton.style.cursor = "pointer";
+      } else {
+        submitButton.disabled = true;
+        submitButton.classList.remove("active");
+        submitButton.style.cursor = "not-allowed";
+      }
     }
 
-    // Submit Quiz and Redirect to Nilai.html with Score
+
     function submitQuiz() {
       if (answers.some((answer) => answer === null)) {
         alert("Silakan jawab semua pertanyaan sebelum mengirimkan.");
@@ -473,11 +514,89 @@
         (sum, score) => sum + (score !== null ? score : 0),
         0
       );
-      // Redirect to Nilai.html dengan skor sebagai parameter query
+      // Redirect ke Nilai.html dengan skor sebagai parameter
       window.location.href = `Nilai.html?score=${totalScore}`;
     }
 
-    // Initial Render
+
+    function interpretScore(score) {
+      if (score <= 4) return "Tidak ada gejala depresi atau hanya gejala yang sangat ringan.";
+      if (score <= 9) return "Gejala depresi ringan.";
+      if (score <= 14) return "Gejala depresi sedang.";
+      if (score <= 19) return "Gejala depresi cukup berat.";
+      return "Gejala depresi berat.";
+    }
+
+    function renderNumberNavigation() {
+      const numberNavigation = document.getElementById("number-navigation");
+      numberNavigation.innerHTML = "";
+
+      for (let i = 0; i < totalQuestions; i++) {
+        const button = document.createElement("button");
+        button.className = `w-10 h-10 flex items-center justify-center rounded-md font-bold transition-all ${i === currentQuestion && answers[currentQuestion] !== null
+            ? "bg-[#1230ae] text-white shadow-lg" // Pertanyaan aktif dan sudah dijawab
+            : i === currentQuestion
+              ? "border-2 border-[#1230ae] text-[#1230ae] bg-white shadow-lg" // Pertanyaan aktif belum dijawab
+              : answers[i] !== null
+                ? "bg-[#1230ae] text-white shadow-md" // Pertanyaan sudah dijawab
+                : "bg-white text-[#1230ae] shadow-md" // Pertanyaan belum dijawab
+          } hover:bg-[#1230ae] hover:text-white`;
+        button.textContent = i + 1;
+        button.onclick = () => {
+          currentQuestion = i;
+          renderQuestion();
+        };
+        numberNavigation.appendChild(button);
+      }
+    }
+
+    function renderQuestion() {
+      // Perbarui pertanyaan dan opsi
+      questionTextEl.textContent = questions[currentQuestion];
+      optionsEl.innerHTML = "";
+
+      // Tampilkan opsi jawaban
+      ["Tidak pernah", "Kadang-kadang", "Cukup sering", "Setiap hari"].forEach(
+        (text, index) => {
+          const option = document.createElement("div");
+          option.className = `option w-full py-2 px-4 text-center border-2 border-[#1230ae] rounded-md cursor-pointer transition-all ${answers[currentQuestion] === index
+              ? "bg-[#1230ae] text-white"
+              : "bg-white text-[#1230ae]"
+            } hover:bg-[#1230ae] hover:text-white`;
+          option.textContent = text;
+          option.onclick = () => toggleOption(index);
+          optionsEl.appendChild(option);
+        }
+      );
+
+      // Perbarui navigasi tombol
+      prevButton.disabled = currentQuestion === 0;
+
+      if (currentQuestion === totalQuestions - 1) {
+        // Jika pertanyaan terakhir, tampilkan tombol Submit
+        nextButton.style.display = "none";
+        submitButton.style.display = "inline-block";
+
+        // Aktifkan tombol Submit hanya jika semua pertanyaan sudah terjawab
+        const allAnswered = answers.every((answer) => answer !== null);
+        submitButton.disabled = !allAnswered;
+        submitButton.classList.toggle("active", allAnswered);
+      } else {
+        // Jika bukan pertanyaan terakhir, tampilkan tombol Next
+        nextButton.style.display = "inline-block";
+        submitButton.style.display = "none";
+      }
+
+      updateProgress();
+      renderNumberNavigation();
+    }
+
+    function toggleOption(index) {
+      answers[currentQuestion] = index; // Set jawaban
+      renderQuestion(); // Render ulang untuk memperbarui tombol Submit
+    }
+
+
     renderQuestion();
 
     // Referensi elemen
@@ -494,12 +613,6 @@
 
     // Fungsi menutup pop-up
     closePopupBtn.addEventListener("click", () => {
-      popup.classList.add("hidden");
-      overlay.classList.add("hidden");
-    });
-
-    // Menutup pop-up saat mengklik overlay
-    overlay.addEventListener("click", () => {
       popup.classList.add("hidden");
       overlay.classList.add("hidden");
     });
