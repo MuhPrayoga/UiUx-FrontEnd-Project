@@ -17,16 +17,17 @@
         flex-direction: column;
         justify-content: space-between;
         min-height: 100vh;
+        animation: backgroundLoop 30s infinite;
       }
 
       .home-button {
         position: absolute;
         top: 20px;
-        left: 96px; /* Sejajar dengan tombol navigasi */
+        left: 96px;
         width: 50px;
         height: 50px;
-        border-radius: 50%; /* Membuat tombol berbentuk bulat */
-        border: 2px solid #010133; /* Border hitam */
+        border-radius: 50%;
+        border: 2px solid #010133;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -34,6 +35,7 @@
         color: #010133;
         cursor: pointer;
         transition: background-color 0.3s ease;
+        z-index: 1;
       }
 
       .home-button i {
@@ -47,7 +49,7 @@
       .nav-button {
         width: 50px;
         height: 50px;
-        border-radius: 50%; /* Membuat tombol berbentuk bulat */
+        border-radius: 50%;
         border: 2px solid #010133;
         display: flex;
         align-items: center;
@@ -56,6 +58,7 @@
         color: #010133;
         cursor: pointer;
         transition: background-color 0.3s ease;
+        z-index: 1;
       }
 
       .nav-button i {
@@ -87,6 +90,7 @@
         align-items: center;
         justify-content: center;
         transition: background-color 0.3s ease;
+        z-index: 1;
       }
 
       .submit-button.active {
@@ -105,6 +109,7 @@
         text-align: center;
         color: #010133;
         margin-top: 50px;
+        z-index: 1;
       }
 
       .question-container {
@@ -113,6 +118,7 @@
         border-radius: 15px;
         margin: auto;
         width: 80%;
+        z-index: 1;
       }
 
       .question-text {
@@ -144,6 +150,7 @@
       .progress-bar-container {
         background-color: #010133;
         padding: 30px 0;
+        z-index: 1;
       }
 
       .progress-bar {
@@ -167,9 +174,44 @@
         width: 80%;
         margin: 20px auto;
       }
+      .spotlight {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 1500px;
+        height: 1500px;
+        background: radial-gradient(circle, rgb(220, 242, 255) 0%, rgba(217, 225, 255, 0.1) 50%, rgba(0, 0, 0, 0) 100%);
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+       transition: transform 0.5s ease-out;
+        z-index: 0;
+      }
+
+      @keyframes backgroundLoop {
+        0% {
+          background-color: #d9e1ff;
+        }
+        25% {
+          background-color: #cde4ff;
+        }
+        50% {
+          background-color: #b8d9ff;
+        }
+        75% {
+          background-color: #cde4ff;
+        }
+        100% {
+          background-color: #d9e1ff;
+        }
+      }
+
+
     </style>
   </head>
   <body>
+
+    <div class="spotlight" id="spotlight"></div>
+
     <!-- Tombol Home -->
     <button class="home-button" onclick="location.href='../Html/index.html'">
       <i class="fas fa-home"></i>
@@ -206,6 +248,17 @@
 
     <!-- JavaScript -->
     <script>
+      const spotlight = document.getElementById("spotlight");
+
+      document.addEventListener("mousemove", (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+        const spotlight = document.getElementById("spotlight");
+
+        spotlight.style.transform = `translate(${x - spotlight.offsetWidth / 2}px, ${y - spotlight.offsetHeight / 2}px)`;
+      });
+
+
       const questions = [
         "Apakah Anda merasa kehilangan minat untuk melakukan aktivitas sehari-hari yang biasanya menyenangkan?",
         "Apakah Anda sering merasa sedih, murung, atau tidak bersemangat tanpa alasan yang jelas?",
