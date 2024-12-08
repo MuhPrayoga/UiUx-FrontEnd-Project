@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
   <meta charset="UTF-8" />
@@ -22,6 +22,14 @@
       /* Gambar tetap (tidak ikut scroll) */
       background-position: center;
       /* Memposisikan gambar di tengah */
+      background-color: #d9e1ff;
+      font-family: "Inter", sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100vh;
+      animation: backgroundLoop 30s infinite;
+      position: relative;
     }
 
     /* Custom styles for the hamburger menu */
@@ -89,16 +97,6 @@
 
     .border-darkBlue {
       border-color: #1230AE;
-    }
-
-    body {
-      background-color: #d9e1ff;
-      font-family: "Inter", sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 100vh;
-      animation: backgroundLoop 30s infinite;
     }
 
     .home-button {
@@ -298,7 +296,7 @@
   <div class="spotlight" id="spotlight"></div>
 
   <!-- Tombol Home -->
-  <button class="home-button" onclick="location.href='../Html/index.html'">
+  <button class="home-button" onclick="location.href='index.html'">
     <i class="fas fa-home"></i>
   </button>
 
@@ -326,7 +324,7 @@
       <i class="fas fa-arrow-right"></i>
     </button>
     <button id="submit-button" class="submit-button" onclick="submitQuiz()" disabled>
-      <a href="/Public/Html/Nilai.html"></a>Submit
+      Submit
     </button>
   </div>
 
@@ -339,8 +337,6 @@
       </div>
     </div>
   </div>
-
-
 
   <!-- Overlay -->
   <div id="overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"></div>
@@ -363,17 +359,16 @@
 
   <!-- JavaScript -->
   <script>
+    // Spotlight Effect
     const spotlight = document.getElementById("spotlight");
 
     document.addEventListener("mousemove", (e) => {
       const x = e.clientX;
       const y = e.clientY;
-      const spotlight = document.getElementById("spotlight");
-
       spotlight.style.transform = `translate(${x - spotlight.offsetWidth / 2}px, ${y - spotlight.offsetHeight / 2}px)`;
     });
 
-
+    // Questionnaire Data
     const questions = [
       "Apakah Anda merasa kehilangan minat untuk melakukan aktivitas sehari-hari yang biasanya menyenangkan?",
       "Apakah Anda sering merasa sedih, murung, atau tidak bersemangat tanpa alasan yang jelas?",
@@ -389,13 +384,16 @@
     const answers = Array(totalQuestions).fill(null);
     let currentQuestion = 0;
 
+    // DOM Elements
     const questionTextEl = document.querySelector(".question-text");
     const optionsEl = document.getElementById("options");
     const progressBarInnerEl = document.getElementById("progress-bar-inner");
+    const progressPercentageEl = document.getElementById("progress-percentage");
     const prevButton = document.getElementById("prev-button");
     const nextButton = document.getElementById("next-button");
     const submitButton = document.getElementById("submit-button");
 
+    // Render Current Question
     function renderQuestion() {
       questionTextEl.textContent = questions[currentQuestion];
       optionsEl.innerHTML = "";
@@ -411,8 +409,7 @@
         optionsEl.appendChild(option);
       });
 
-      document.getElementById("question-number").textContent = `Question ${currentQuestion + 1
-        } of ${totalQuestions}`;
+      document.getElementById("question-number").textContent = `Question ${currentQuestion + 1} of ${totalQuestions}`;
 
       prevButton.disabled = currentQuestion === 0;
       if (currentQuestion === totalQuestions - 1) {
@@ -427,6 +424,7 @@
       checkSubmitEligibility();
     }
 
+    // Toggle Option Selection
     function toggleOption(index) {
       if (answers[currentQuestion] === index) {
         answers[currentQuestion] = null;
@@ -436,6 +434,7 @@
       renderQuestion();
     }
 
+    // Navigate Between Questions
     function navigate(direction) {
       if (direction === "next" && currentQuestion < totalQuestions - 1) {
         currentQuestion++;
@@ -445,48 +444,40 @@
       renderQuestion();
     }
 
+    // Update Progress Bar
     function updateProgress() {
       const answeredCount = answers.filter((answer) => answer !== null).length;
       const progressPercentage = (answeredCount / totalQuestions) * 100;
 
       // Update lebar progress bar
-      const progressBarInnerEl = document.getElementById("progress-bar-inner");
       progressBarInnerEl.style.width = `${progressPercentage}%`;
 
       // Update teks persentase
-      const progressPercentageEl = document.getElementById("progress-percentage");
       progressPercentageEl.textContent = `${Math.round(progressPercentage)}%`;
     }
 
-
+    // Check if Submit Button Should be Enabled
     function checkSubmitEligibility() {
       const allAnswered = answers.every((answer) => answer !== null);
       submitButton.disabled = !allAnswered;
       submitButton.classList.toggle("active", allAnswered);
     }
 
+    // Submit Quiz and Redirect to Nilai.html with Score
     function submitQuiz() {
       if (answers.some((answer) => answer === null)) {
-        alert("Please answer all questions before submitting.");
+        alert("Silakan jawab semua pertanyaan sebelum mengirimkan.");
         return;
       }
       const totalScore = answers.reduce(
         (sum, score) => sum + (score !== null ? score : 0),
         0
       );
-      const result = interpretScore(totalScore);
-      alert(`Your total score: ${totalScore}\n${result}`);
+      // Redirect to Nilai.html dengan skor sebagai parameter query
+      window.location.href = `Nilai.html?score=${totalScore}`;
     }
 
-
-    function interpretScore(score) {
-      if (score <= 4) return "Tidak ada gejala depresi atau hanya gejala yang sangat ringan.";
-      if (score <= 9) return "Gejala depresi ringan.";
-      if (score <= 14) return "Gejala depresi sedang.";
-      if (score <= 19) return "Gejala depresi cukup berat.";
-      return "Gejala depresi berat.";
-    }
-
+    // Initial Render
     renderQuestion();
 
     // Referensi elemen
@@ -503,6 +494,12 @@
 
     // Fungsi menutup pop-up
     closePopupBtn.addEventListener("click", () => {
+      popup.classList.add("hidden");
+      overlay.classList.add("hidden");
+    });
+
+    // Menutup pop-up saat mengklik overlay
+    overlay.addEventListener("click", () => {
       popup.classList.add("hidden");
       overlay.classList.add("hidden");
     });
