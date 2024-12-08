@@ -315,7 +315,7 @@
   <div class="spotlight" id="spotlight"></div>
 
   <!-- Tombol Home -->
-  <button class="home-button" onclick="location.href='../Html/index.html'">
+  <button class="home-button" onclick="location.href='index.html'">
     <i class="fas fa-home"></i>
   </button>
 
@@ -434,8 +434,8 @@
         (text, index) => {
           const option = document.createElement("div");
           option.className = `option w-full py-2 px-4 text-center border-2 border-[#1230ae] rounded-md cursor-pointer transition-all ${answers[currentQuestion] === index
-              ? "bg-[#1230ae] text-white"
-              : "bg-white text-[#1230ae]"
+            ? "bg-[#1230ae] text-white"
+            : "bg-white text-[#1230ae]"
             } hover:bg-[#1230ae] hover:text-white`;
           option.textContent = text;
           option.onclick = () => toggleOption(index);
@@ -534,12 +534,12 @@
       for (let i = 0; i < totalQuestions; i++) {
         const button = document.createElement("button");
         button.className = `w-10 h-10 flex items-center justify-center rounded-md font-bold transition-all ${i === currentQuestion && answers[currentQuestion] !== null
-            ? "bg-[#1230ae] text-white shadow-lg" // Pertanyaan aktif dan sudah dijawab
-            : i === currentQuestion
-              ? "border-2 border-[#1230ae] text-[#1230ae] bg-white shadow-lg" // Pertanyaan aktif belum dijawab
-              : answers[i] !== null
-                ? "bg-[#1230ae] text-white shadow-md" // Pertanyaan sudah dijawab
-                : "bg-white text-[#1230ae] shadow-md" // Pertanyaan belum dijawab
+          ? "bg-[#1230ae] text-white shadow-lg" // Pertanyaan aktif dan sudah dijawab
+          : i === currentQuestion
+            ? "border-2 border-[#1230ae] text-[#1230ae] bg-white shadow-lg" // Pertanyaan aktif belum dijawab
+            : answers[i] !== null
+              ? "bg-[#1230ae] text-white shadow-md" // Pertanyaan sudah dijawab
+              : "bg-white text-[#1230ae] shadow-md" // Pertanyaan belum dijawab
           } hover:bg-[#1230ae] hover:text-white`;
         button.textContent = i + 1;
         button.onclick = () => {
@@ -560,8 +560,8 @@
         (text, index) => {
           const option = document.createElement("div");
           option.className = `option w-full py-2 px-4 text-center border-2 border-[#1230ae] rounded-md cursor-pointer transition-all ${answers[currentQuestion] === index
-              ? "bg-[#1230ae] text-white"
-              : "bg-white text-[#1230ae]"
+            ? "bg-[#1230ae] text-white"
+            : "bg-white text-[#1230ae]"
             } hover:bg-[#1230ae] hover:text-white`;
           option.textContent = text;
           option.onclick = () => toggleOption(index);

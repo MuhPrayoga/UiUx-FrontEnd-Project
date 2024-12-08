@@ -308,12 +308,12 @@
       const resultModal = document.getElementById("result-modal");
       resultModal.style.display = "none";
       // Redirect to home after closing modal
-      window.location.href = "/Public/Html/index.html";
+      window.location.href = "index.html";
     }
 
     // Function to redirect to home
     function goHome() {
-      window.location.href = "/Public/Html/index.html";
+      window.location.href = "index.html";
     }
 
     // On page load
@@ -327,12 +327,12 @@
         } else {
           alert("Skor tidak valid.");
           // Redirect to home if score is invalid
-          window.location.href = "/Public/Html/index.html";
+          window.location.href = "index.html";
         }
       } else {
         alert("Skor tidak ditemukan.");
         // Redirect to home if score is missing
-        window.location.href = "/Public/Html/index.html";
+        window.location.href = "index.html";
       }
     };
 
@@ -342,7 +342,7 @@
       if (event.target == resultModal) {
         resultModal.style.display = "none";
         // Redirect to home after closing modal
-        window.location.href = "/Public/Html/index.html";
+        window.location.href = "index.html";
       }
     };
   </script>
